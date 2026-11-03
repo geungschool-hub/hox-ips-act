@@ -834,7 +834,7 @@ function flySvg(p, opt){
     '<clipPath id="' + p + '_cH"><circle cx="105" cy="118" r="48"/></clipPath>' +
     '<clipPath id="' + p + '_cT"><ellipse cx="248" cy="118" rx="92" ry="70"/></clipPath>' +
     '<clipPath id="' + p + '_cA"><ellipse cx="440" cy="140" rx="125" ry="60" transform="rotate(10 440 140)"/></clipPath>' +
-    '<pattern id="' + p + '_eye" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#7E1628"/><circle cx="3" cy="3" r="2.1" fill="#A3283F"/></pattern>' +
+    '<pattern id="' + p + '_eye" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#E6E6E6"/><circle cx="3" cy="3" r="2.1" fill="#FFFFFF"/></pattern>' +
     '</defs>';
   /* 다리 — 몸통 뒤에 그려 붙는 자리를 가린다 */
   ['T1', 'T2', 'T3'].forEach(function(sg){
@@ -858,7 +858,7 @@ function flySvg(p, opt){
   /* 머리 — 체절 3개 · 겹눈 · 주둥이 */
   h += '<g clip-path="url(#' + p + '_cH)">' + rc(55, 68, 34, 100, 'H1') + rc(89, 68, 32, 100, 'H2') + rc(121, 68, 35, 100, 'H3') + '</g>' +
        '<circle cx="105" cy="118" r="48"' + OUT + '/>' +
-       '<ellipse cx="114" cy="110" rx="24" ry="30" fill="url(#' + p + '_eye)" stroke="#3E0A12" stroke-width="2"/>' +
+       '<ellipse cx="114" cy="110" rx="24" ry="30" fill="url(#' + p + '_eye)" stroke="#8A8A8A" stroke-width="2"/>' +
        '<ellipse cx="106" cy="98" rx="6" ry="9" fill="#fff" opacity="0.35"/>' +
        '<path d="M90,160 L84,184" stroke="#6B4F3A" stroke-width="7" stroke-linecap="round"/><ellipse cx="83" cy="188" rx="8" ry="5" fill="#6B4F3A"/>';
   /* 날개 — 둘째 쌍(가슴 셋째 체절)을 먼저, 첫째 쌍(가슴 둘째 체절)을 위에 */

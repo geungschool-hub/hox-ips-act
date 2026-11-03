@@ -7,10 +7,10 @@
 <script>
 /* ══ 미완성 잠금 ══════════════════════════════════════════════
    교사가 「완성」이라고 판단하기 전에는 학생이 들어올 수 없게 막는다.
-   ★이 스크립트는 head 에 있어야 한다 — 본문보다 먼저 돌아야 잠긴 화면이 깜빡이지 않는다.
-   ★기본이 「잠김」이다(fail-closed). 조건이 맞을 때만 .unlocked 가 붙는다.
+   ★이 스크립트는 head에 있어야 한다 — 본문보다 먼저 돌아야 잠긴 화면이 깜빡이지 않는다.
+   ★기본이 「잠김」이다(fail-closed). 조건이 맞을 때만 .unlocked가 붙는다.
    ⚠ 이것은 잠금이지 보안이 아니다. 소스를 보면 비밀번호가 보인다. */
-var DRAFT_MODE = true;                     /* ◀ 완성되면 false 로 바꿔 재배포 */
+var DRAFT_MODE = true;                     /* ◀ 완성되면 false로 바꿔 재배포 */
 var DRAFT_PASS = '7856';                   /* ★교사 지정. 모든 활동이 같은 값을 쓴다 */
 var DRAFT_KEY  = 'hoxips_draft_ok';        /* ★활동마다 다른 이름 — 허브가 한 origin 이다 */
 try {
@@ -45,7 +45,7 @@ try {
   --old:#6B7280;
   --ink:#1A1A1A;   --sub:#555;  --line:#D5D8DE;  --paper:#fff;  --bg:#F4F6F9;
 
-  /* ★호미오유전자 8색 — 채도(최대 채널 − 최소 채널) >= 120. 검사가 CSS 와 JS 상수(GENES8)의 짝을 문다.
+  /* ★호미오유전자 8색 — 채도(최대 채널 − 최소 채널) >= 120. 검사가 CSS와 JS 상수(GENES8)의 짝을 문다.
      ⚠ 색만으로 구분시키지 않는다 — 띠·체절·칩에 늘 번호(1~8)를 함께 적는다.
      Antp(5) = 보라 · Ubx(6) = 청록. 나머지는 교과서처럼 이름 없이 번호만. */
   --g1:#880E4F; --g2:#E65100; --g3:#9A4B12; --g4:#7C8C00;
@@ -85,7 +85,7 @@ h3{font-size:16.5px;margin:16px 0 8px;color:var(--ink);}
 .hd{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
 .hd h2{flex:1 1 300px;margin-bottom:0;}
 
-/* ── 쪽 탭 (clone-diff-act 와 같은 손놀림) ── */
+/* ── 쪽 탭 (clone-diff-act와 같은 손놀림) ── */
 .pagetabs{display:flex;gap:8px;margin:0 0 16px;}
 .pagetabs button{flex:1;font:inherit;font-size:16px;font-weight:700;min-height:52px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--sub);cursor:pointer;line-height:1.35;}
 .pagetabs button small{display:block;font-size:13.5px;font-weight:600;}
@@ -124,9 +124,9 @@ h3{font-size:16.5px;margin:16px 0 8px;color:var(--ink);}
   }
   .panes{
     display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,440px);
-    gap:18px; align-items:start;   /* ★align-items:start 가 없으면 칸이 늘어나 sticky 가 듣지 않는다 */
+    gap:18px; align-items:start;   /* ★align-items:start가 없으면 칸이 늘어나 sticky가 듣지 않는다 */
   }
-  /* ★top 은 기본값일 뿐이다 — stickyCenter() 가 (화면 − 칸)/2 로 덮어쓴다 */
+  /* ★top은 기본값일 뿐이다 — stickyCenter()가 (화면 − 칸)/2로 덮어쓴다 */
   .pane-l{position:sticky; top:10px; max-height:calc(100vh - 20px); overflow-y:auto;}
   .pane-l svg.stage{min-width:0;}
   .pane-r svg.stage{min-width:0;}
@@ -140,7 +140,7 @@ h3{font-size:16.5px;margin:16px 0 8px;color:var(--ink);}
   .pane-l,.pr-do,.pr-q{min-width:0;width:100%;}
 }
 
-/* ── 무대 ── ★.stage-wrap 에 overflow:hidden 을 주지 않는다 */
+/* ── 무대 ── ★.stage-wrap에 overflow:hidden을 주지 않는다 */
 .stage-wrap{border:1px solid var(--line);border-radius:12px;background:#FBFCFE;padding:8px;
             overflow-x:auto;-webkit-overflow-scrolling:touch;}
 svg.stage{display:block;width:100%;min-width:560px;height:auto;touch-action:manipulation;}
@@ -295,10 +295,16 @@ footer{text-align:center;margin-top:22px;}
 
 /* ── 애니메이션 ──
    ★모든 연출은 장식이다. 결과 상태는 연출과 무관하게 즉시 확정된다.
-   ★물체마다 g 를 한 번만 짓고 위치·투명도·색만 바꾼다(chromolab 방식). */
+   ★물체마다 g를 한 번만 짓고 위치·투명도·색만 바꾼다(chromolab 방식). */
 .rfade{transition:opacity .45s ease;}
 .rmove{transition:transform .85s cubic-bezier(.4,0,.2,1), opacity .45s ease;}
 .rfill{transition:fill .6s ease, opacity .45s ease;}
+[data-s]{transition:fill .45s ease, stroke .45s ease;}
+.homintro{border:2px solid #D9CCF2;border-radius:14px;padding:12px 14px 6px;margin:0 0 18px;background:#FBF9FE;}
+.homintro h3{margin:2px 0 10px;font-size:18px;color:#5321A8;}
+.hchip{font:inherit;font-size:16px;font-weight:700;min-height:48px;padding:6px 14px;margin:4px;border-radius:12px;border:2px solid #6C2BD9;background:#fff;color:#5321A8;cursor:pointer;}
+.hchip.on{background:#6C2BD9;color:#fff;}
+.hchip.seen:not(.on)::after{content:" ✓";}
 @media (prefers-reduced-motion: reduce){
   .rfade,.rmove,.rfill{transition:none !important;}
 }
@@ -340,7 +346,7 @@ html:not(.unlocked) #draftGate{display:flex;}
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
       <div>
         <h1>🪰 몸의 설계도 — 발생과 유전자발현의 조절</h1>
-        <p class="sub">같은 유전자를 가진 세포들이 어떻게 머리·가슴·배의 서로 다른 구조가 되는가? 분화한 세포를 다시 되돌릴 수는 있는가? (교과서 81~83쪽)</p>
+        <p class="sub">같은 유전자를 가진 세포에서 어떻게 머리·가슴·배의 서로 다른 구조가 만들어지는가? 분화를 마친 세포를 줄기세포로 되돌릴 수 있는가? (교과서 81~83쪽)</p>
       </div>
       <span class="badge" id="progress" onclick="tapProgress()">진행 0 / 7</span>
     </div>
@@ -353,20 +359,20 @@ html:not(.unlocked) #draftGate{display:flex;}
   </div>
 
   <div class="pagetabs" role="tablist">
-    <button type="button" id="tab1" role="tab" onclick="goPage(1, true)">1쪽 · 몸의 설계도<small>교과서 81쪽 — 호미오유전자</small></button>
-    <button type="button" id="tab2" role="tab" onclick="goPage(2, true)">2쪽 · 분화를 되돌린다<small>교과서 83쪽 — 줄기세포 · 오가노이드</small></button>
+    <button type="button" id="tab1" role="tab" onclick="goPage(1, true)">1쪽 · 호미오유전자와 발생<small>교과서 81쪽</small></button>
+    <button type="button" id="tab2" role="tab" onclick="goPage(2, true)">2쪽 · 유도 만능 줄기세포와 오가노이드<small>교과서 83쪽</small></button>
   </div>
 
 <div class="page" id="page1">
   <!-- ══ ⓪ 앞 시간과 잇기 ══ -->
   <div class="card" data-hub-card="s0">
-    <h2>⓪ 앞 시간과 잇기<span class="yr">교과서 79~80쪽 → 81쪽</span></h2>
+    <h2>⓪ 앞 활동 돌아보기<span class="yr">교과서 79~80쪽 → 81쪽</span></h2>
     <div class="recap">
       <div class="rc"><span class="rk">79쪽 복제 생물</span>분화한 세포도 개체를 이루는 <b>모든 유전자</b>를 가진다.</div>
       <div class="rc"><span class="rk">79쪽 세포분화의 원리</span>세포마다 <b>발현되는 유전자가 달라</b> 모양과 기능이 달라진다.</div>
       <div class="rc"><span class="rk">80쪽 MyoD · 전사 인자의 조합</span><b>전사 인자</b>가 어떤 유전자를 켤지 정해 <b>세포의 종류</b>가 결정된다.</div>
     </div>
-    <div class="bigq">🤔 이번 물음 — 초파리의 모든 세포는 같은 유전자를 가진다. 그런데 머리 자리에서는 더듬이가, 가슴 자리에서는 다리와 날개가 생긴다. 무엇이 「이 자리에는 이 구조」를 정하는가?</div>
+    <div class="bigq">🤔 생각해 볼 문제 — 초파리의 체세포는 모두 같은 유전자를 가지는데도 머리에는 더듬이가, 가슴에는 다리와 날개가 생긴다. 몸의 각 부위에 어떤 구조가 생길지는 무엇이 결정하는가?</div>
     <div id="introQ"></div>
     <div class="secreset"><button type="button" onclick="resetSec('intro')">↻ ⓪ 다시 하기</button></div>
   </div>
@@ -374,13 +380,31 @@ html:not(.unlocked) #draftGate{display:flex;}
   <!-- ══ ① 호미오유전자 지도 ══ -->
   <div class="card split" id="cardMap" data-hub-card="s1">
     <div class="hd">
-      <h2 class="g5">① 호미오유전자 지도 — 어느 체절에서 무엇이 발현되는가<span class="yr">교과서 81쪽 그림 Ⅱ-17</span></h2>
+      <h2 class="g5">① 체절마다 발현되는 호미오유전자<span class="yr">교과서 81쪽 그림 Ⅱ-17</span></h2>
       <span class="tag" id="mapProg">살펴본 유전자 0 / 8</span>
     </div>
+    <div class="homintro">
+      <h3>🧬 먼저 — 호미오유전자란 무엇인가?</h3>
+      <div class="panes">
+        <div class="pane-l">
+          <div class="stage-wrap"><svg class="stage" id="homStage" viewBox="0 0 720 312" xmlns="http://www.w3.org/2000/svg" role="img"
+               aria-label="왼쪽은 초파리 성체, 오른쪽은 고른 자리의 세포이다. 세포의 핵에는 호미오유전자 8개가 모두 들어 있고, 자리에 따라 그중 하나가 발현되어 그 산물인 전사 인자가 구조를 만드는 유전자들의 발현을 조절한다."></svg></div>
+          <div class="anicap" id="hom_cap"></div>
+        </div>
+        <div class="pane-r">
+          <div class="pr-do">
+            <div class="taskbar">초파리 몸의 네 자리에서 세포를 하나씩 골라, 그 세포의 핵 속 <b>호미오유전자 8개</b> 가운데 어느 것이 <b>발현</b>되는지 비교하시오. 3곳 이상 살펴보시오.</div>
+            <div class="chiprow" id="homChips"></div>
+            <div class="msg hide" id="fb_hom"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="panes">
+
       <div class="pane-l">
-        <div class="stage-wrap"><svg class="stage" id="mapStage" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img"
-             aria-label="위는 3번 염색체의 호미오유전자 1~8, 가운데는 배아의 체절 14개(머리 3 · 가슴 3 · 배 8), 아래는 성체에서 체절마다 생기는 구조이다. 유전자를 고르면 그 유전자가 발현되는 체절과 그 체절의 구조가 강조된다."></svg></div>
+        <div class="stage-wrap"><svg class="stage" id="mapStage" viewBox="0 0 720 618" xmlns="http://www.w3.org/2000/svg" role="img"
+             aria-label="위는 3번 염색체의 호미오유전자 1~8, 가운데는 배아의 체절 14개(머리 3 · 가슴 3 · 배 8), 아래는 체절 구조를 가진 성체 초파리이다. 성체의 각 부위는 그 부위가 생긴 체절의 호미오유전자 색으로 칠해져 있다. 유전자를 고르면 그 유전자가 발현되는 체절과 그 체절에서 생긴 부위만 색이 남는다."></svg></div>
         <div class="anicap" id="map_cap"></div>
         <ul class="slg" id="map_lg"></ul>
         <details style="margin-top:10px;"><summary style="cursor:pointer;font-weight:700;min-height:44px;line-height:44px;">📖 교과서 그림 Ⅱ-17 보기</summary>
@@ -390,14 +414,14 @@ html:not(.unlocked) #draftGate{display:flex;}
       </div>
       <div class="pane-r">
         <div class="pr-do">
-          <div class="taskbar">아래 유전자를 하나씩 눌러, 그 유전자가 <b>배아의 어느 체절</b>에서 발현되고 그 체절에서 <b>어떤 구조</b>가 생기는지 관찰하시오. Antp(5)·Ubx(6)를 포함해 3개 이상 살펴보시오.</div>
+          <div class="taskbar">아래 유전자(또는 그림의 염색체 띠·체절·성체 부위)를 하나씩 눌러, 그 유전자가 <b>배아의 어느 체절</b>에서 발현되고 성체의 <b>어느 부위</b>가 되는지 관찰하시오. Antp(5)·Ubx(6)를 포함해 3개 이상 살펴보시오.</div>
           <div class="chiprow" id="geneChips"></div>
           <div class="panel">
             <div class="ptitle">🔎 알아 둘 것 — 81쪽</div>
             <ul>
               <li><b>체절</b> — 초파리의 몸은 머리·가슴·배가 마디(체절)로 나뉘어 있다.</li>
               <li><b>호미오유전자</b> — 배아의 각 체절에서 서로 다른 호미오유전자가 발현되어, 체절마다 서로 다른 구조가 형성된다.</li>
-              <li>이 모형은 체절과 유전자의 대응을 <b>단순하게</b> 나타냈다. 이름은 교과서에 나온 Antp·Ubx 만 적었다.</li>
+              <li>이 모형은 체절과 호미오유전자의 대응을 <b>단순화</b>하여 나타낸 것이다. 유전자 이름은 교과서에 나온 Antp와 Ubx만 표시하였다.</li>
             </ul>
           </div>
           <div class="msg hide" id="fb_map"></div>
@@ -411,7 +435,7 @@ html:not(.unlocked) #draftGate{display:flex;}
   <!-- ══ ② 돌연변이 만들어 보기 ══ -->
   <div class="card split" id="cardMut" data-hub-card="s2">
     <div class="hd">
-      <h2 class="g5">② 돌연변이 만들어 보기<span class="yr">교과서 81쪽 그림 Ⅱ-16</span></h2>
+      <h2 class="g5">② 호미오유전자의 돌연변이<span class="yr">교과서 81쪽 그림 Ⅱ-16</span></h2>
       <span class="tag" id="mutProg">관찰한 돌연변이 0 / 2</span>
     </div>
     <div class="panes">
@@ -450,13 +474,13 @@ html:not(.unlocked) #draftGate{display:flex;}
   <!-- ══ ③ 위치 → 정체성 → 분화 ══ -->
   <div class="card split" id="cardCasc" data-hub-card="s3">
     <div class="hd">
-      <h2 class="g5">③ 81쪽이 말하는 것 — 위치 → 정체성 → 분화<span class="yr">교과서 81쪽 · 80쪽과 견주기</span></h2>
-      <span class="tag" id="cascProg">본 단계 1 / 5</span>
+      <h2 class="g5">③ 호미오유전자는 어떻게 구조를 만드는가?<span class="yr">교과서 81쪽 · 80쪽과 비교</span></h2>
+      <span class="tag" id="cascProg">단계 1 / 5</span>
     </div>
     <div class="panes">
       <div class="pane-l">
         <div class="stage-wrap"><svg class="stage" id="cascStage" viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" role="img"
-             aria-label="둘째 가슴 체절의 세포들에서 호미오유전자 Antp 가 발현되고, 그 산물인 전사 인자가 다른 유전자들의 전사를 조절하며, 그 산물이 또 다른 유전자를 켜는 일이 이어져 다리와 날개가 형성되는 과정."></svg></div>
+             aria-label="둘째 가슴 체절의 세포들에서 호미오유전자 Antp가 발현되고, 그 산물인 전사 인자가 다른 유전자들의 전사를 조절하며, 그 산물이 또 다른 유전자를 켜는 일이 이어져 다리와 날개가 형성되는 과정."></svg></div>
         <div class="anibar">
           <button type="button" class="btn sm ghost" id="cs_first" onclick="cascGo(-99)">⏮</button>
           <button type="button" class="btn sm ghost" id="cs_prev" onclick="cascGo(-1)">◀ 이전</button>
@@ -469,9 +493,9 @@ html:not(.unlocked) #draftGate{display:flex;}
       </div>
       <div class="pane-r">
         <div class="pr-do">
-          <div class="goal"><b>🎯 이 단계의 목적</b><br>80쪽에서 전사 인자(MyoD)는 <b>세포의 종류</b>를 정하였다. 81쪽의 호미오유전자 산물도 <b>전사 인자</b>이다.
-            이 전사 인자가 <b>몸의 어느 자리에 무슨 구조</b>가 생길지 정하는 과정을 한 단계씩 확인한다.</div>
-          <div class="taskbar">왼쪽 그림 아래의 <b>▶ 다음</b> 을 눌러 끝까지 보고, 아래 표에서 80쪽 MyoD 와 견주시오.</div>
+          <div class="goal"><b>🎯 이 단계의 목적</b><br>80쪽에서 전사 인자 MyoD는 <b>세포의 종류</b>를 결정하였다. 호미오유전자의 산물도 <b>전사 인자</b>이며, <b>몸의 각 부위에 어떤 구조</b>가 생길지 결정한다.
+            그 과정을 단계별로 확인하시오.</div>
+          <div class="taskbar">왼쪽 그림 아래의 <b>▶ 다음</b>을 눌러 끝까지 보고, 아래 표에서 80쪽 MyoD와 비교하시오.</div>
           <div class="panel">
             <div class="ptitle">📌 81쪽</div>
             <ul>
@@ -488,15 +512,15 @@ html:not(.unlocked) #draftGate{display:flex;}
     <div class="secreset"><button type="button" onclick="resetSec('casc')">↻ ③ 처음 단계로 되돌리기</button></div>
   </div>
 
-  <div class="pagenext"><button type="button" class="btn" onclick="goPage(2, true)">2쪽 · 분화를 되돌린다 ▶</button></div>
+  <div class="pagenext"><button type="button" class="btn" onclick="goPage(2, true)">2쪽 · 유도 만능 줄기세포와 오가노이드 ▶</button></div>
 </div>
 
 <div class="page hide" id="page2">
   <!-- ══ ④ 다형성능과 역분화 ══ -->
   <div class="card split" id="cardIps" data-hub-card="s4">
     <div class="hd">
-      <h2 class="stem">④ 분화를 되돌린다 — 유도 만능 줄기세포<span class="yr">교과서 83쪽</span></h2>
-      <span class="tag" id="ipsProg">본 단계 1 / 5</span>
+      <h2 class="stem">④ 유도 만능 줄기세포 만들기 — 역분화<span class="yr">교과서 83쪽</span></h2>
+      <span class="tag" id="ipsProg">단계 1 / 5</span>
     </div>
     <div class="panes">
       <div class="pane-l">
@@ -514,7 +538,7 @@ html:not(.unlocked) #draftGate{display:flex;}
       </div>
       <div class="pane-r">
         <div class="pr-do">
-          <div class="taskbar">▶ 다음 을 눌러 실험을 진행하시오. 두 번째 단계에서는 아래 <b>전사 인자 유전자 4개</b>를 눌러 피부 세포에 도입하시오.</div>
+          <div class="taskbar">▶ 다음을 눌러 실험을 진행하시오. 두 번째 단계에서는 아래 <b>전사 인자 유전자 4개</b>를 눌러 피부 세포에 도입하시오.</div>
           <div class="chiprow" id="tfChips"></div>
           <div class="panel">
             <div class="ptitle">🔎 알아 둘 것 — 83쪽</div>
@@ -525,8 +549,8 @@ html:not(.unlocked) #draftGate{display:flex;}
             </ul>
           </div>
           <div class="panel">
-            <div class="ptitle">🔗 80쪽과 잇기</div>
-            <p>세포의 종류를 정하는 것은 <b>전사 인자</b>였다. 배아줄기세포의 특성을 나타내는 데 중요한 전사 인자 4개의 유전자를 분화한 체세포에 넣으면, 그 세포의 유전자발현 양상이 배아줄기세포와 비슷해진다.</p>
+            <div class="ptitle">🔗 80쪽과 연결하기</div>
+            <p>80쪽에서 세포의 종류를 결정한 것은 <b>전사 인자</b>의 조합이었다. 배아줄기세포의 특성을 나타내는 데 중요한 전사 인자 4개의 유전자를 분화한 체세포에 넣으면, 그 세포의 유전자발현 양상이 배아줄기세포와 비슷해진다.</p>
           </div>
           <div class="msg hide" id="fb_ips"></div>
         </div>
@@ -540,13 +564,13 @@ html:not(.unlocked) #draftGate{display:flex;}
   <div class="card split" id="cardSort" data-hub-card="s5">
     <div class="hd">
       <h2 class="stem">⑤ 배아줄기세포 vs 유도 만능 줄기세포<span class="yr">교과서 83쪽</span></h2>
-      <span class="tag" id="sortProg">놓은 카드 0 / 8</span>
+      <span class="tag" id="sortProg">분류한 카드 0 / 8</span>
     </div>
     <div class="panes">
       <div class="pane-l">
         <div id="sortTbl"></div>
         <div class="readbox">
-          <div style="font-weight:800;font-size:16.5px;margin-bottom:6px;">🔎 더 읽을거리 — 지금 일어나고 있는 일</div>
+          <div style="font-weight:800;font-size:16.5px;margin-bottom:6px;">🔎 더 읽을거리 — 유도 만능 줄기세포 치료의 현재</div>
           <a href="https://m.news.nate.com/view/20261031n07026" target="_blank" rel="noopener">메디컬투데이 (2026. 10. 31.) — 파킨슨병 iPS 줄기세포 치료, 조건부 승인 후 첫 환자 이식 ↗</a>
           <p style="margin:8px 0 0;font-size:15px;line-height:1.7;">유도 만능 줄기세포로 만든 파킨슨병 치료제가 일본에서 조건부로 승인된 뒤, 첫 환자에게 이식되었다는 기사이다.
             기사를 읽고 <b>이미 확인된 것</b>과 <b>아직 확인해야 할 것</b>을 구별하시오.</p>
@@ -566,13 +590,13 @@ html:not(.unlocked) #draftGate{display:flex;}
         <div class="pr-q"></div>
       </div>
     </div>
-    <div class="secreset"><button type="button" onclick="resetSec('sort')">↻ ⑤ 카드 거두고 다시 하기</button></div>
+    <div class="secreset"><button type="button" onclick="resetSec('sort')">↻ ⑤ 다시 하기</button></div>
   </div>
 
   <!-- ══ ⑥ 오가노이드 ══ -->
   <div class="card split" id="cardOrg" data-hub-card="s6">
     <div class="hd">
-      <h2 class="stem">⑥ 오가노이드 — 접시 위의 작은 장기<span class="yr">교과서 83쪽 그림 Ⅱ-19</span></h2>
+      <h2 class="stem">⑥ 오가노이드의 활용<span class="yr">교과서 83쪽 그림 Ⅱ-19</span></h2>
       <span class="tag" id="orgProg">살펴본 활용 0 / 6</span>
     </div>
     <div class="panes">
@@ -583,7 +607,7 @@ html:not(.unlocked) #draftGate{display:flex;}
       </div>
       <div class="pane-r">
         <div class="pr-do">
-          <div class="taskbar">그림 Ⅱ-19 의 활용 분야를 하나씩 눌러, 오가노이드가 어디에 쓰이는지 확인하시오.</div>
+          <div class="taskbar">그림 Ⅱ-19의 활용 분야를 하나씩 눌러, 오가노이드가 어디에 쓰이는지 확인하시오.</div>
           <div class="tiles" id="orgTiles"></div>
           <div class="msg info hide" id="orgText"></div>
           <div class="msg hide" id="fb_org"></div>
@@ -600,7 +624,7 @@ html:not(.unlocked) #draftGate{display:flex;}
       <h2 class="amber">💪 더 풀어 보기</h2>
       <span class="tag" id="pracProg">푼 문항 0 / 4</span>
     </div>
-    <p class="sub">활동에서 확인한 것을 다시 묻는다. 풀지 않아도 활동은 완료된다.</p>
+    <p class="sub">활동에서 확인한 내용을 문항으로 점검하시오.</p>
     <div id="pracBox"></div>
     <div class="secreset"><button type="button" onclick="resetSec('prac')">↻ 💪 다시 풀기</button></div>
   </div>
@@ -611,10 +635,10 @@ html:not(.unlocked) #draftGate{display:flex;}
       <h2 class="green">⑦ 정리하기</h2>
       <span class="tag" id="writeProg">작성한 문항 0 / 3</span>
     </div>
-    <p class="sub">활동에서 확인한 것을 문장으로 옮기시오. 답안을 일정 길이 이상 쓰면 모범답안이 열린다.</p>
+    <p class="sub">활동에서 확인한 내용을 바탕으로 서술하시오. 일정 분량 이상 서술하면 모범답안을 볼 수 있다.</p>
     <div id="writeBox"></div>
     <div class="selfcheck" id="selfBox"></div>
-    <div class="secreset"><button type="button" onclick="resetSec('write')">↻ ⑦ 적은 답안 지우고 다시 하기</button></div>
+    <div class="secreset"><button type="button" onclick="resetSec('write')">↻ ⑦ 다시 하기</button></div>
   </div>
 </div>
 
@@ -652,8 +676,8 @@ html:not(.unlocked) #draftGate{display:flex;}
      · 호미오유전자 산물 = 전사 인자 → 각 체절에서 어떤 구조가 형성되는지 결정
      · 각 체절에서 서로 다른 호미오유전자가 발현 → 체절마다 유전자발현 양상이 달라져 서로 다른 구조
    ★모형(단순화): 체절 14개(머리 H1~H3 · 가슴 T1~T3 · 배 A1~A8)마다 대표 호미오유전자 하나.
-     Ubx 기능 상실 → Ubx 가 발현되던 체절(T3·A1)에서 Antp(5)가 대신 발현 → T3 이 T2 처럼 되어 날개가 생긴다.
-     Antp 가 머리에서 발현 → 더듬이가 생길 체절(H1)에서 Antp 가 발현 → 더듬이 대신 다리. */
+     Ubx 기능 상실 → Ubx가 발현되던 체절(T3·A1)에서 Antp(5)가 대신 발현 → T3이 T2처럼 되어 날개가 생긴다.
+     Antp가 머리에서 발현 → 더듬이가 생길 체절(H1)에서 Antp가 발현 → 더듬이 대신 다리. */
 var LS_KEY = 'hoxips_v1';
 
 var GENES8 = [
@@ -664,7 +688,7 @@ var GENES8 = [
 var SEGS = ['H1', 'H2', 'H3', 'T1', 'T2', 'T3', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8'];
 var SEG_NAME = { H1:'머리 첫째 체절', H2:'머리 둘째 체절', H3:'머리 셋째 체절',
                  T1:'가슴 첫째 체절', T2:'가슴 둘째 체절', T3:'가슴 셋째 체절' };
-function segName(s){ return SEG_NAME[s] || ('배 ' + s.slice(1) + '번째 체절'); }
+function segName(s){ return SEG_NAME[s] || ('배 ' + ['첫','둘','셋','넷','다섯','여섯','일곱','여덟'][+s.slice(1)-1] + '째 체절'); }
 var NORMAL = { H1:1, H2:2, H3:3, T1:4, T2:5, T3:6, A1:6, A2:7, A3:7, A4:7, A5:8, A6:8, A7:8, A8:8 };
 var STRUCT_NAME = { ant:'더듬이', leg:'다리', wing:'날개', halt:'평균곤' };
 
@@ -782,30 +806,109 @@ function arrow(x1, y1, x2, y2, c, w){
 }
 function r1(v){ return Math.round(v * 10) / 10; }
 
-/* ── 구조 아이콘 — ① 무대 · ② 무대 · 범례가 같은 함수로 그린다 ── */
-function icAnt(cx, cy){
-  return '<path d="M' + cx + ',' + (cy + 16) + ' L' + (cx - 7) + ',' + (cy - 14) + ' M' + (cx - 4) + ',' + (cy - 1) + ' L' + (cx - 13) + ',' + (cy - 6) +
-         ' M' + cx + ',' + (cy + 16) + ' L' + (cx + 8) + ',' + (cy - 12) + ' M' + (cx + 5) + ',' + (cy) + ' L' + (cx + 13) + ',' + (cy - 4) + '"' +
-         ' stroke="' + C_TF_INK + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>';
+/* ── 성체 초파리 옆모습 — 교과서 그림 Ⅱ-17 아래 칸처럼, 각 부위를 그 부위가 생긴 체절의 호미오유전자 색으로 칠한다.
+   도입 · ① · ② · ③이 같은 함수로 그린다. 부위는 다 지어 두고 색·투명도만 바꾼다(flyApply).
+   좌표는 머리가 왼쪽인 옆모습 기준(가로 약 640 · 세로 약 320). ── */
+var FLY_LEG = {
+  H1:[[70,100],[46,84],[32,52],[20,22],[8,8]],
+  T1:[[178,170],[150,205],[128,240],[118,282],[102,298]],
+  T2:[[240,184],[245,226],[226,266],[232,302],[220,316]],
+  T3:[[300,172],[338,208],[362,248],[386,292],[404,304]]
+};
+var FLY_AP = [['H1','ant'], ['H1','leg'], ['T1','leg'], ['T2','leg'], ['T2','wing'], ['T3','leg'], ['T3','wing'], ['T3','halt']];
+function flyLeg(pts, sg){
+  var W = [8, 6.5, 4.5, 3], h = '', i;
+  for (i = 0; i < pts.length - 1; i++)
+    h += '<line x1="' + pts[i][0] + '" y1="' + pts[i][1] + '" x2="' + pts[i + 1][0] + '" y2="' + pts[i + 1][1] + '" data-s="' + sg + '" data-k="s" stroke-width="' + W[i] + '" stroke-linecap="round"/>';
+  for (i = 1; i < pts.length - 1; i++)
+    h += '<circle cx="' + pts[i][0] + '" cy="' + pts[i][1] + '" r="' + (W[i - 1] / 2 + 0.8) + '" data-s="' + sg + '" data-k="f"/>';
+  return h;
 }
-function icLeg(cx, cy){
-  return '<polyline points="' + (cx - 2) + ',' + (cy - 18) + ' ' + (cx + 8) + ',' + (cy - 2) + ' ' + (cx - 4) + ',' + (cy + 12) + ' ' + (cx + 9) + ',' + (cy + 20) + '"' +
-         ' stroke="' + C_LEG + '" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>';
+function flySvg(p, opt){
+  opt = opt || {};
+  function tap(sg){ return opt.tap ? ' style="cursor:pointer" onclick="' + opt.tap + '(&#39;' + sg + '&#39;)"' : ''; }
+  function lb(x, y, t, a){ return opt.labels ? '<text x="' + x + '" y="' + y + '" font-size="16" font-weight="800" fill="#222" stroke="#fff" stroke-width="4" paint-order="stroke" text-anchor="' + (a || 'start') + '">' + t + '</text>' : ''; }
+  function rc(x, y, w, hh, sg){ return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + hh + '" data-s="' + sg + '" data-k="f"' + tap(sg) + '/>'; }
+  var OUT = ' fill="none" stroke="#3B2A1E" stroke-opacity="0.6" stroke-width="2"';
+  var h = '<defs>' +
+    '<clipPath id="' + p + '_cH"><circle cx="105" cy="118" r="48"/></clipPath>' +
+    '<clipPath id="' + p + '_cT"><ellipse cx="248" cy="118" rx="92" ry="70"/></clipPath>' +
+    '<clipPath id="' + p + '_cA"><ellipse cx="440" cy="140" rx="125" ry="60" transform="rotate(10 440 140)"/></clipPath>' +
+    '<pattern id="' + p + '_eye" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#7E1628"/><circle cx="3" cy="3" r="2.1" fill="#A3283F"/></pattern>' +
+    '</defs>';
+  /* 다리 — 몸통 뒤에 그려 붙는 자리를 가린다 */
+  ['T1', 'T2', 'T3'].forEach(function(sg){
+    h += '<g id="' + p + '_ap_' + sg + '_leg" class="rfade"' + tap(sg) + '>' + flyLeg(FLY_LEG[sg], sg) + (sg === 'T2' ? lb(252, 334, '다리') : '') + '</g>';
+  });
+  /* 배 — 체절 8개 */
+  var ab = '';
+  for (var i = 0; i < 8; i++){
+    var x0 = 315 + i * 32;
+    ab += rc(x0, 60, i === 7 ? 90 : 32, 170, 'A' + (i + 1));
+    if (i) ab += '<line x1="' + x0 + '" y1="60" x2="' + x0 + '" y2="230" stroke="#fff" stroke-opacity="0.6" stroke-width="2"/>';
+  }
+  h += '<g clip-path="url(#' + p + '_cA)">' + ab + '</g><ellipse cx="440" cy="140" rx="125" ry="60" transform="rotate(10 440 140)"' + OUT + '/>';
+  /* 가슴 — 체절 3개 */
+  h += '<g clip-path="url(#' + p + '_cT)">' + rc(150, 40, 36, 160, 'T1') + rc(186, 40, 114, 160, 'T2') + rc(300, 40, 50, 160, 'T3') +
+       '<line x1="186" y1="40" x2="186" y2="200" stroke="#fff" stroke-opacity="0.6" stroke-width="2"/><line x1="300" y1="40" x2="300" y2="200" stroke="#fff" stroke-opacity="0.6" stroke-width="2"/></g>' +
+       '<ellipse cx="248" cy="118" rx="92" ry="70"' + OUT + '/>';
+  [[200, 58, 192, 40], [226, 52, 222, 33], [254, 50, 256, 30], [282, 55, 290, 38]].forEach(function(b){
+    h += '<line x1="' + b[0] + '" y1="' + b[1] + '" x2="' + b[2] + '" y2="' + b[3] + '" stroke="#2B1D12" stroke-width="2.2" stroke-linecap="round"/>';
+  });
+  /* 머리 — 체절 3개 · 겹눈 · 주둥이 */
+  h += '<g clip-path="url(#' + p + '_cH)">' + rc(55, 68, 34, 100, 'H1') + rc(89, 68, 32, 100, 'H2') + rc(121, 68, 35, 100, 'H3') + '</g>' +
+       '<circle cx="105" cy="118" r="48"' + OUT + '/>' +
+       '<ellipse cx="114" cy="110" rx="24" ry="30" fill="url(#' + p + '_eye)" stroke="#3E0A12" stroke-width="2"/>' +
+       '<ellipse cx="106" cy="98" rx="6" ry="9" fill="#fff" opacity="0.35"/>' +
+       '<path d="M90,160 L84,184" stroke="#6B4F3A" stroke-width="7" stroke-linecap="round"/><ellipse cx="83" cy="188" rx="8" ry="5" fill="#6B4F3A"/>';
+  /* 날개 — 둘째 쌍(가슴 셋째 체절)을 먼저, 첫째 쌍(가슴 둘째 체절)을 위에 */
+  var VEIN = ' stroke="#7EA2BC" stroke-width="1.3" fill="none"';
+  h += '<g id="' + p + '_ap_T3_wing" class="rfade"' + tap('T3') + '>' +
+       '<path d="M318,70 C380,44 540,44 612,82 C630,104 590,126 510,124 C430,122 360,102 318,70 Z" fill="#CFE5F3" fill-opacity="0.6" data-s="T3" data-k="s" stroke-width="2.5"/>' +
+       '<path d="M322,72 Q470,60 608,84 M332,82 Q470,106 560,116"' + VEIN + '/>' + lb(520, 108, '둘째 날개', 'middle') + '</g>';
+  h += '<g id="' + p + '_ap_T2_wing" class="rfade"' + tap('T2') + '>' +
+       '<path d="M262,60 C320,8 490,-12 586,14 C616,28 600,66 520,82 C430,98 330,92 262,60 Z" fill="#CFE5F3" fill-opacity="0.6" data-s="T2" data-k="s" stroke-width="2.5"/>' +
+       '<path d="M266,60 Q420,22 588,18 M268,64 Q420,56 566,62 M300,76 Q420,84 524,82 M430,40 L440,86"' + VEIN + '/>' + lb(470, 50, '날개', 'middle') + '</g>';
+  /* 평균곤 — 가슴 셋째 체절 */
+  h += '<g id="' + p + '_ap_T3_halt" class="rfade"' + tap('T3') + '>' +
+       '<line x1="322" y1="74" x2="338" y2="46" data-s="T3" data-k="s" stroke-width="4" stroke-linecap="round"/><circle cx="340" cy="40" r="8" data-s="T3" data-k="f"/>' +
+       lb(330, 16, '평균곤', 'end') + '</g>';
+  /* 더듬이 — 머리 첫째 체절 */
+  h += '<g id="' + p + '_ap_H1_ant" class="rfade"' + tap('H1') + '>' +
+       '<circle cx="70" cy="94" r="7" data-s="H1" data-k="f"/>' +
+       '<ellipse cx="58" cy="80" rx="8" ry="14" transform="rotate(-35 58 80)" data-s="H1" data-k="f" stroke="#3B2A1E" stroke-width="1.2"/>' +
+       '<path d="M52,70 Q42,46 26,26" stroke="#2B1D12" stroke-width="2" fill="none"/>' +
+       '<path d="M47,58 l-9,-2 M42,48 l-9,-1 M36,40 l-8,0 M47,58 l3,-9 M42,48 l4,-8 M36,40 l4,-7" stroke="#2B1D12" stroke-width="1.3" fill="none"/>' +
+       lb(72, 34, '더듬이') + '</g>';
+  /* 머리의 다리 — Antp가 머리에서 발현될 때만 보인다 */
+  h += '<g id="' + p + '_ap_H1_leg" class="rfade" opacity="0"' + tap('H1') + '>' + flyLeg(FLY_LEG.H1, 'H1') + lb(66, 40, '다리') + '</g>';
+  return '<g id="' + p + '_root">' + h + '</g>';
 }
-function icWing(cx, cy){
-  return '<ellipse cx="' + cx + '" cy="' + cy + '" rx="19" ry="8" transform="rotate(-25 ' + cx + ' ' + cy + ')" fill="' + C_WING + '" stroke="' + C_WING_LINE + '" stroke-width="2"/>';
+/* G = 체절 → 유전자 · sel = 강조할 유전자(0 = 모두 색 · 없는 번호 = 모두 회색) */
+function flyColor(g, sel){ return (!sel || g === sel) ? GENES8[g - 1].c : '#D5D5D5'; }
+function flyApply(p, G, sel){
+  var root = document.getElementById(p + '_root');
+  if (!root || !root.querySelectorAll) return;
+  var els = root.querySelectorAll('[data-s]');
+  for (var i = 0; i < els.length; i++){
+    var c = flyColor(G[els[i].getAttribute('data-s')], sel);
+    if (els[i].getAttribute('data-k') === 's') els[i].style.stroke = c; else els[i].style.fill = c;
+  }
+  FLY_AP.forEach(function(a){
+    var on = structOf(a[0], G[a[0]]).indexOf(a[1]) >= 0, el = document.getElementById(p + '_ap_' + a[0] + '_' + a[1]);
+    if (!el) return;
+    el.setAttribute('opacity', on ? '1' : '0');
+    el.style.pointerEvents = on ? '' : 'none';
+  });
 }
-function icHalt(cx, cy){
-  return '<line x1="' + (cx - 5) + '" y1="' + (cy + 9) + '" x2="' + (cx + 3) + '" y2="' + (cy - 4) + '" stroke="' + C_BODY_LINE + '" stroke-width="2.5"/>' +
-         '<circle cx="' + (cx + 4) + '" cy="' + (cy - 6) + '" r="5" fill="' + C_BODY_LINE + '"/>';
-}
-var IC = { ant:icAnt, leg:icLeg, wing:icWing, halt:icHalt };
 
 /* ══════════════════ 3. 상태 ══════════════════
    ★초기값이 null 인 칸을 두지 않는다 — typeof null === 'object' 이라 복원에서 통째로 버려진다. */
 function freshState(){
   return {
     page:1,
+    homSel:'',         /* ① 앞부분 — 고른 자리(H1 · T2 · T3 · A6) */
+    homSeen:{},        /* ① 앞부분 — 살펴본 자리 */
     mapSel:0,          /* ① 고른 유전자 0~8 (0 = 없음) */
     mapSeen:{},        /* ① 살펴본 유전자 { '5':true } */
     mut:{},            /* ② 켠 돌연변이 { ubx:true } */
@@ -875,7 +978,7 @@ var STEPS = [
   { key:'intro', no:'⓪', name:'앞 시간과 잇기', sub:'79~80쪽' },
   { key:'map',   no:'①', name:'호미오유전자 지도', sub:'유전자 3개 이상' },
   { key:'mut',   no:'②', name:'돌연변이', sub:'Ubx · Antp' },
-  { key:'casc',  no:'③', name:'위치→분화', sub:'80쪽과 견주기' },
+  { key:'casc',  no:'③', name:'위치→분화', sub:'80쪽과 비교' },
   { key:'ips',   no:'④', name:'역분화', sub:'전사 인자 4개' },
   { key:'sort',  no:'⑤', name:'줄기세포 비교', sub:'카드 8장' },
   { key:'org',   no:'⑥', name:'오가노이드', sub:'활용 3개 이상' }
@@ -930,67 +1033,161 @@ function renderPage(){
 
 /* ══════════════════ 6. ① 호미오유전자 지도 ══════════════════
    ★한 번 짓고 투명도·굵기만 바꾼다. 좌표는 아래 함수가 정한다(검사가 문다). */
-var MAP = { chrX1:40, chrX2:680, chrY:30, chrH:20, segY:150, segH:50, segW:40, icY:300 };
-function geneX(n){ return 110 + (n - 1) * 72; }
-function segX(j){ return 42 + j * 46; }                 /* 체절 칸의 왼쪽 끝 */
+var MAP = { segW:40 };                                 /* ②의 체절 띠 */
+function segX(j){ return 42 + j * 46; }                 /* ② 체절 띠 칸의 왼쪽 끝 */
 function segCx(j){ return segX(j) + MAP.segW / 2; }
+/* ① 무대 — 교과서 그림 Ⅱ-17의 세 층(염색체 · 배아 · 성체)을 그대로 따른다 */
+var EMB = { y:182 };
+var EMB_W  = [30, 30, 30, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38];
+var EMB_RY = [22, 25, 28, 34, 35, 35, 37, 38, 38, 37, 35, 32, 28, 22];
+function geneX(n){ return 120 + (n - 1) * 72; }
+function embX(j){ var x = 108; for (var i = 0; i < j; i++) x += EMB_W[i]; return x; }
+function embCx(j){ return embX(j) + EMB_W[j] / 2; }
 function mapSvg(){
   var h = '', N = segGene({});
-  h += txt('', 40, 17, '3번 염색체의 호미오유전자', 14, C_SUB, '', '700');
-  h += '<rect x="' + MAP.chrX1 + '" y="' + MAP.chrY + '" width="' + (MAP.chrX2 - MAP.chrX1) + '" height="' + MAP.chrH + '" rx="10" fill="' + C_CHR + '" stroke="' + C_CHR_LINE + '" stroke-width="2"/>';
-  /* 점선 — 띠 → 체절. 체절마다 하나씩 지어 두고 고른 유전자 것만 보인다 */
-  SEGS.forEach(function(s, j){
-    var g = N[s];
-    h += '<line id="ml_' + j + '" class="rfade" x1="' + geneX(g) + '" y1="' + (MAP.chrY + MAP.chrH + 4) + '" x2="' + segCx(j) + '" y2="' + (MAP.segY - 2) + '"' +
-         ' stroke="' + GENES8[g - 1].c + '" stroke-width="2" stroke-dasharray="5,4" opacity="0"/>';
+  h += txt('', 20, 20, '3번 염색체의 호미오유전자', 15, C_SUB, '', '800');
+  h += '<rect x="60" y="34" width="620" height="18" rx="9" fill="#CDE7EE" stroke="#5E97A6" stroke-width="2"/>' +
+       '<rect x="68" y="37" width="604" height="4" rx="2" fill="#fff" opacity="0.6"/>';
+  /* 점선 — 띠 → 배아 체절(교과서 그림처럼 늘 보이고, 고른 유전자 것만 진해진다) */
+  SEGS.forEach(function(sg, j){
+    var g = N[sg];
+    h += '<line id="ml_' + j + '" x1="' + geneX(g) + '" y1="54" x2="' + embCx(j) + '" y2="' + (EMB.y - EMB_RY[j] + 6) + '"' +
+         ' stroke="' + GENES8[g - 1].c + '" stroke-width="1.6" stroke-dasharray="4,4" opacity="0.45"/>';
   });
   GENES8.forEach(function(G){
     var x = geneX(G.n);
     h += '<g id="mb_' + G.n + '" class="rfade" style="cursor:pointer" onclick="pickGene(' + G.n + ')">' +
-         '<rect id="mbr_' + G.n + '" x="' + (x - 12) + '" y="' + (MAP.chrY - 5) + '" width="24" height="' + (MAP.chrH + 10) + '" rx="4" fill="' + G.c + '" stroke="#fff" stroke-width="2"/>' +
-         txt('', x, MAP.chrY + 15, String(G.n), 14, '#fff', 'middle', '800') + '</g>';
-    if (G.name) h += txt('', x, MAP.chrY + MAP.chrH + 22, G.name, 14, G.c, 'middle', '800', ' font-style="italic"');
+         '<rect x="' + (x - 22) + '" y="26" width="44" height="56" fill="#fff" fill-opacity="0"/>' +
+         '<rect id="mbr_' + G.n + '" x="' + (x - 8) + '" y="31" width="16" height="24" rx="3" fill="' + G.c + '" stroke="#fff" stroke-width="1.5"/>' +
+         txt('', x, 74, String(G.n) + (G.name ? ' ' + G.name : ''), 14, G.c, 'middle', '800') + '</g>';
   });
-  h += txt('', 40, MAP.segY - 12, '배아의 체절과 호미오유전자 발현 위치', 14, C_SUB, '', '700');
-  SEGS.forEach(function(s, j){
-    var g = N[s];
-    h += '<rect id="ms_' + j + '" class="rfill" x="' + segX(j) + '" y="' + MAP.segY + '" width="' + MAP.segW + '" height="' + MAP.segH + '" rx="8"' +
-         ' fill="' + GENES8[g - 1].c + '" fill-opacity="0.3" stroke="' + GENES8[g - 1].c + '" stroke-width="2"/>' +
-         txt('', segCx(j), MAP.segY + 32, String(g), 16, C_INK, 'middle', '800');
-  });
-  /* 머리 · 가슴 · 배 묶음 */
+  /* 배아 — 등 쪽은 회색, 체절은 그 체절의 호미오유전자 색 */
+  h += txt('', 20, 106, '배아의 체절과 호미오유전자 발현 위치', 15, C_SUB, '', '800');
+  var L = embX(0), R = embX(13) + EMB_W[13];
+  h += '<ellipse cx="' + ((L + R) / 2) + '" cy="' + (EMB.y - 22) + '" rx="' + ((R - L) / 2 + 12) + '" ry="34" fill="#DADDE1" stroke="#A7AEB5" stroke-width="1.5"/>';
+  for (var j = 13; j >= 0; j--){
+    var g = N[SEGS[j]];
+    h += '<g style="cursor:pointer" onclick="pickGene(' + g + ')"><ellipse id="ms_' + j + '" cx="' + embCx(j) + '" cy="' + EMB.y + '" rx="' + (EMB_W[j] / 2 + 5) + '" ry="' + EMB_RY[j] + '"' +
+         ' fill="' + GENES8[g - 1].c + '" stroke="#fff" stroke-width="1.5"/>' + txt('', embCx(j), EMB.y + 5, String(g), 13, '#fff', 'middle', '800') + '</g>';
+  }
   [['머리', 0, 2], ['가슴', 3, 5], ['배', 6, 13]].forEach(function(b){
-    var x1 = segX(b[1]) + 2, x2 = segX(b[2]) + MAP.segW - 2, y = MAP.segY + MAP.segH + 10;
-    h += '<path d="M' + x1 + ',' + (y - 4) + ' L' + x1 + ',' + y + ' L' + x2 + ',' + y + ' L' + x2 + ',' + (y - 4) + '" stroke="' + C_SUB + '" stroke-width="1.5" fill="none"/>' +
-         txt('', (x1 + x2) / 2, y + 18, b[0], 15, C_INK, 'middle', '700');
+    var x1 = embX(b[1]) + 2, x2 = embX(b[2]) + EMB_W[b[2]] - 2, y = 234;
+    h += '<path d="M' + x1 + ',' + (y - 5) + ' L' + x1 + ',' + y + ' L' + x2 + ',' + y + ' L' + x2 + ',' + (y - 5) + '" stroke="' + C_SUB + '" stroke-width="1.5" fill="none"/>' +
+         txt('', (x1 + x2) / 2, y + 19, b[0], 15, C_INK, 'middle', '700');
   });
-  h += txt('', 40, 262, '성체에서 그 체절에 생기는 구조 (한 쌍씩)', 14, C_SUB, '', '700');
-  SEGS.forEach(function(s, j){
-    var st = structOf(s, N[s]), cx = segCx(j), inner = '';
-    st.forEach(function(k, i){ var yy = MAP.icY + (st.length === 2 ? (i === 0 ? 46 : -14) : 16);
-      inner += '<g transform="translate(' + cx + ',' + yy + ') scale(1.45) translate(' + (-cx) + ',' + (-yy) + ')">' + IC[k](cx, yy) + '</g>'; });
-    if (st.length) h += '<g id="mi_' + j + '" class="rfade" opacity="0.6">' + inner + '</g>';
-  });
+  /* 성체 */
+  h += txt('', 20, 292, '체절 구조를 가진 성체 초파리', 15, C_SUB, '', '800');
+  h += '<g transform="translate(70,304) scale(0.9)">' + flySvg('mf', { labels:true, tap:'flyTapMap' }) + '</g>';
   return h;
 }
 function mapApply(){
   var sel = state.mapSel, N = segGene({});
   GENES8.forEach(function(G){
     var r = document.getElementById('mbr_' + G.n);
-    if (r){ r.setAttribute('stroke', sel === G.n ? C_INK : '#fff'); r.setAttribute('stroke-width', sel === G.n ? '3' : '2'); }
-    fadeTo('mb_' + G.n, (!sel || sel === G.n) ? 1 : 0.45);
+    if (r){ r.setAttribute('stroke', sel === G.n ? C_INK : '#fff'); r.setAttribute('stroke-width', sel === G.n ? '3' : '1.5'); }
+    fadeTo('mb_' + G.n, (!sel || sel === G.n) ? 1 : 0.35);
   });
-  SEGS.forEach(function(s, j){
-    var on = sel && N[s] === sel;
-    fadeTo('ml_' + j, on ? 1 : 0);
-    var r = document.getElementById('ms_' + j);
-    if (r){ r.setAttribute('fill-opacity', on ? '0.9' : (sel ? '0.12' : '0.3')); r.setAttribute('stroke-width', on ? '3' : '2'); }
-    fadeTo('mi_' + j, on ? 1 : (sel ? 0.25 : 0.6));
+  SEGS.forEach(function(sg, j){
+    var on = !sel || N[sg] === sel, l = document.getElementById('ml_' + j), e = document.getElementById('ms_' + j);
+    if (l){ l.setAttribute('opacity', sel ? (on ? '1' : '0.06') : '0.45'); l.setAttribute('stroke-width', sel && on ? '2.6' : '1.6'); }
+    if (e) e.style.fill = on ? GENES8[N[sg] - 1].c : '#D5D5D5';
   });
+  flyApply('mf', N, sel);
+}
+function flyTapMap(sg){ pickGene(segGene({})[sg]); }
+/* ══ ① 앞부분 — 호미오유전자란 무엇인가 ══
+   같은 초파리의 네 자리에서 세포를 하나씩 골라, 핵 속 호미오유전자 8개(모든 세포에 같다) 중 무엇이 발현되는지 비교한다. */
+var HOM = [
+  { s:'H1', n:'머리 앞쪽 — 더듬이 자리', o1:'더듬이를 만드는', o2:'유전자들의 발현을 조절' },
+  { s:'T2', n:'가슴 가운데 — 날개 자리', o1:'다리·날개를 만드는', o2:'유전자들의 발현을 조절' },
+  { s:'T3', n:'가슴 뒤쪽 — 평균곤 자리', o1:'다리·평균곤을 만드는', o2:'유전자들의 발현을 조절' },
+  { s:'A6', n:'배 — 다리·날개가 없는 자리', o1:'다리·날개가 없는 배 체절을', o2:'만드는 유전자들의 발현을 조절' }
+];
+var HOM_PT = { H1:[72, 112], T2:[243, 118], T3:[322, 118], A6:[500, 150] };
+var HOM_NEED = 3, homMounted = false;
+function homBy(sg){ for (var i = 0; i < HOM.length; i++){ if (HOM[i].s === sg) return HOM[i]; } return null; }
+function homBX(n){ return 506 + (n - 1) * 22; }
+function homSvg(){
+  var h = txt('', 20, 24, '초파리 성체 — 세포를 고를 자리', 15, C_SUB, '', '800');
+  h += '<g transform="translate(10,44) scale(0.62)">' + flySvg('hf', { tap:'homTap' }) + '</g>';
+  h += '<line id="hom_lead" x1="0" y1="0" x2="454" y2="172" stroke="' + C_INK + '" stroke-width="2" stroke-dasharray="5,4" opacity="0"/>';
+  h += '<circle id="hom_mark" cx="0" cy="0" r="12" fill="#fff" fill-opacity="0.3" stroke="' + C_INK + '" stroke-width="3" opacity="0"/>';
+  h += '<circle cx="582" cy="172" r="130" fill="#FFF8F0" stroke="#C9A88A" stroke-width="3"/>' + txt('', 476, 66, '세포', 14, '#8D6E4F', '', '800');
+  h += '<ellipse cx="582" cy="140" rx="106" ry="70" fill="#F3ECFA" stroke="#9C7BBF" stroke-width="2.5"/>' + txt('', 500, 98, '핵', 14, '#6A4C93', '', '800');
+  h += txt('', 590, 98, '호미오유전자 8개', 13, '#4A3B5C', 'middle', '800');
+  h += '<rect x="494" y="114" width="176" height="16" rx="8" fill="#CDE7EE" stroke="#5E97A6" stroke-width="1.5"/>';
+  h += '<rect id="hom_glow" x="0" y="107" width="22" height="30" rx="5" fill="' + C_ON + '" stroke="' + C_ON_LINE + '" stroke-width="2" opacity="0"/>';
+  GENES8.forEach(function(G){ h += '<rect id="hb_' + G.n + '" class="rfade" x="' + (homBX(G.n) - 6) + '" y="113" width="12" height="18" rx="2" fill="' + G.c + '"/>'; });
+  h += '<g id="hom_flow" class="rfade" opacity="0">' +
+       '<path id="hom_path" d="M582,134 L582,150" stroke="' + C_SUB + '" stroke-width="2.2" fill="none"/>' +
+       '<polygon points="576,151 588,151 582,160" fill="' + C_SUB + '"/>' +
+       '<ellipse id="hom_tf" class="rfill" cx="582" cy="176" rx="48" ry="16" style="fill:#999"/>' + txt('', 582, 181, '전사 인자', 13, '#fff', 'middle', '800') +
+       arrow(582, 194, 582, 224, C_SUB) +
+       txt('hom_o1', 582, 246, '', 15, C_INK, 'middle', '800') + txt('hom_o2', 582, 266, '', 13.5, C_SUB, 'middle', '700') + '</g>';
+  h += txt('hom_idle', 582, 250, '← 왼쪽에서 자리를 고르시오', 14, C_SUB, 'middle', '700');
+  return h;
+}
+function homApply(){
+  var c = homBy(state.homSel), N = segGene({}), g = c ? N[c.s] : 0;
+  flyApply('hf', N, g || 99);
+  GENES8.forEach(function(G){ fadeTo('hb_' + G.n, (!g || G.n === g) ? 1 : 0.3); });
+  var gl = document.getElementById('hom_glow');
+  if (gl){ gl.setAttribute('x', g ? homBX(g) - 11 : 0); gl.setAttribute('opacity', g ? '1' : '0'); }
+  fadeTo('hom_flow', g ? 1 : 0);
+  fadeTo('hom_idle', g ? 0 : 1);
+  var mk = document.getElementById('hom_mark'), ld = document.getElementById('hom_lead');
+  if (!g){ if (mk) mk.setAttribute('opacity', '0'); if (ld) ld.setAttribute('opacity', '0'); return; }
+  var pt = HOM_PT[c.s], mx = r1(10 + 0.62 * pt[0]), my = r1(44 + 0.62 * pt[1]);
+  if (mk){ mk.setAttribute('cx', mx); mk.setAttribute('cy', my); mk.setAttribute('opacity', '1'); }
+  if (ld){ ld.setAttribute('x1', mx); ld.setAttribute('y1', my); ld.setAttribute('opacity', '1'); }
+  var pa = document.getElementById('hom_path');
+  if (pa) pa.setAttribute('d', 'M' + homBX(g) + ',133 Q' + homBX(g) + ',150 582,151');
+  fillTo('hom_tf', GENES8[g - 1].c);
+  var t1 = document.getElementById('hom_o1'), t2 = document.getElementById('hom_o2');
+  if (t1) t1.textContent = c.o1;
+  if (t2) t2.textContent = c.o2;
+}
+function homCaption(sg){
+  var c = homBy(sg);
+  if (!c) return '자리를 하나 고르시오. 어느 자리의 세포이든 핵 속에는 <b>같은 호미오유전자 8개</b>가 들어 있다.';
+  var g = segGene({})[c.s];
+  return '<b>' + segName(c.s) + '</b>의 세포 — 호미오유전자 8개 가운데 <b>' + geneLabel(g) + '번</b>이 발현된다. ' +
+         '그 산물인 <b>전사 인자</b>가 ' + c.o1 + ' ' + c.o2 + '한다.';
+}
+function renderHom(){
+  if (!homMounted){ setHTML('homStage', homSvg()); homMounted = true; }
+  homApply();
+  var h = '';
+  HOM.forEach(function(c){
+    var on = state.homSel === c.s, seen = !!state.homSeen[c.s];
+    h += '<button type="button" class="hchip' + (on ? ' on' : '') + (seen ? ' seen' : '') + '" onclick="homPick(&#39;' + c.s + '&#39;)" aria-pressed="' + on + '">' + c.n + '</button>';
+  });
+  setHTML('homChips', h);
+  setHTML('hom_cap', homCaption(state.homSel));
+  homFb();
+}
+function homSeenCount(){ return Object.keys(state.homSeen).length; }
+function homFb(){
+  if (homSeenCount() < HOM_NEED){ showFb('fb_hom', ''); return; }
+  showFb('fb_hom', 'good', '✅ <b>정리</b> — 모든 체절의 세포는 <b>같은 호미오유전자</b>를 가지지만, 체절마다 <b>발현되는 호미오유전자가 다르다</b>. ' +
+    '호미오유전자는 이처럼 <b>각 체절에서 어떤 구조가 형성될지 결정하는 유전자</b>이며, 그 산물은 다른 유전자의 발현을 조절하는 <b>전사 인자</b>이다(81쪽).' +
+    '<br>💡 이름의 뜻 — homeo-는 「같은·비슷한」이라는 뜻이다. 이 유전자에 돌연변이가 생기면 몸의 한 부분이 다른 부분과 같은 모양으로 바뀌는데(②에서 확인), 이 현상에서 이름이 붙었다.');
+}
+function homPick(sg){
+  if (!homBy(sg)) return;
+  state.homSel = (state.homSel === sg) ? '' : sg;
+  if (state.homSel) state.homSeen[sg] = true;
+  saveState();
+  renderHom();
+  updateAll();
+}
+function homTap(sg){
+  var N = segGene({});
+  for (var i = 0; i < HOM.length; i++){ if (N[HOM[i].s] === N[sg]){ homPick(HOM[i].s); return; } }
 }
 /* 고른 유전자의 캡션 — 순수 함수(검사가 문다) */
 function mapCaption(n){
-  if (!n) return '유전자를 하나 고르시오. 모든 체절의 세포는 <b>같은 호미오유전자 8개</b>를 다 가지고 있다. 다른 것은 <b>어느 것이 발현되는가</b>이다.';
+  if (!n) return '유전자를 하나 고르시오. 모든 체절의 세포는 <b>호미오유전자 8개</b>를 모두 가지고 있으며, 체절마다 다른 것은 <b>발현되는 유전자</b>이다.';
   var N = segGene({}), segs = [], built = [];
   SEGS.forEach(function(s){
     if (N[s] !== n) return;
@@ -1000,8 +1197,8 @@ function mapCaption(n){
   });
   var where = segs.length > 2 ? segName(segs[0]) + ' ~ ' + segName(segs[segs.length - 1]) : segs.map(segName).join(' · ');
   var rest = (built.length && built.length < segs.length) ? ' (나머지 체절에는 다리·날개 같은 부속 구조가 생기지 않는다.)' : '';
-  return '<b>유전자 ' + geneLabel(n) + '</b> — ' + where + '에서 발현된다. → ' +
-         (built.length ? built.join(', ') + ' 생긴다.' + rest : '이 체절들에는 다리·날개 같은 부속 구조가 생기지 않는다.');
+  return '<b>유전자 ' + geneLabel(n) + '</b> — ' + where + '에서 발현된다. ' +
+         (built.length ? '그 결과 ' + built.join(', ') + ' 생긴다.' + rest : '이 체절들에는 다리·날개 같은 부속 구조가 생기지 않는다.');
 }
 /* 받침이 있으면 「이」, 없으면 「가」 */
 function josaIGa(w){
@@ -1029,8 +1226,8 @@ function pickGene(n){
   saveState();
   renderMap();
   var c = mapSeenCount();
-  if (c >= MAP_NEED && state.mapSeen['5'] && state.mapSeen['6']) showFb('fb_map', 'good', '✅ Antp·Ubx 를 포함해 ' + c + '개를 살펴보았다. 아래 문항에 답하시오.');
-  else if (c >= MAP_NEED) showFb('fb_map', 'warn', 'Antp(5) 와 Ubx(6) 도 살펴보시오. ② 에서 이 두 유전자의 돌연변이를 다룬다.');
+  if (c >= MAP_NEED && state.mapSeen['5'] && state.mapSeen['6']) showFb('fb_map', 'good', '✅ Antp·Ubx를 포함한 ' + c + '개의 유전자를 관찰하였다. 아래 문항에 답하시오.');
+  else if (c >= MAP_NEED) showFb('fb_map', 'warn', 'Antp(5)와 Ubx(6)도 관찰하시오. 두 유전자의 돌연변이는 ②에서 다룬다.');
   updateAll();
 }
 
@@ -1050,45 +1247,26 @@ function mutSvg(){
     h += '<path d="M' + x1 + ',' + (y - 4) + ' L' + x1 + ',' + y + ' L' + x2 + ',' + y + ' L' + x2 + ',' + (y - 4) + '" stroke="' + C_SUB + '" stroke-width="1.5" fill="none"/>' +
          txt('', (x1 + x2) / 2, y + 17, b[0], 15, C_INK, 'middle', '700');
   });
-  /* 성체 초파리 옆모습 — 머리가 왼쪽. 부위는 다 지어 두고 투명도만 바꾼다 */
-  var L = 'stroke="' + C_LEG + '" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"';
-  h += '<g id="fl_w2" class="rfade" opacity="0"><ellipse cx="400" cy="214" rx="100" ry="26" transform="rotate(-8 400 214)" fill="' + C_WING + '" fill-opacity="0.9" stroke="' + C_WING_LINE + '" stroke-width="2"/></g>';
-  h += '<polyline points="225,318 205,352 214,388 196,404" ' + L + '/>' +
-       '<polyline points="265,325 262,362 276,396 268,410" ' + L + '/>' +
-       '<polyline points="305,318 322,355 318,392 336,406" ' + L + '/>';
-  h += '<ellipse cx="445" cy="285" rx="115" ry="55" fill="' + C_BODY + '" stroke="' + C_BODY_LINE + '" stroke-width="2"/>';
-  [395, 435, 475, 515].forEach(function(x){
-    var hh = 55 * Math.sqrt(Math.max(0, 1 - Math.pow((x - 445) / 115, 2))) - 4;
-    h += '<line x1="' + x + '" y1="' + r1(285 - hh) + '" x2="' + x + '" y2="' + r1(285 + hh) + '" stroke="' + C_BODY_LINE + '" stroke-width="1.5" opacity="0.55"/>';
-  });
-  h += '<ellipse cx="265" cy="275" rx="78" ry="52" fill="' + C_BODY + '" stroke="' + C_BODY_LINE + '" stroke-width="2"/>';
-  h += '<g id="fl_halt" class="rfade"><line x1="318" y1="236" x2="330" y2="208" stroke="' + C_BODY_LINE + '" stroke-width="3"/><circle cx="332" cy="203" r="7" fill="' + C_BODY_LINE + '"/></g>';
-  h += '<g id="fl_w1"><ellipse cx="362" cy="190" rx="110" ry="30" transform="rotate(-18 362 190)" fill="' + C_WING + '" fill-opacity="0.9" stroke="' + C_WING_LINE + '" stroke-width="2"/></g>';
-  h += '<circle cx="150" cy="280" r="42" fill="' + C_BODY + '" stroke="' + C_BODY_LINE + '" stroke-width="2"/>' +
-       '<ellipse cx="140" cy="276" rx="21" ry="26" fill="#A3123A"/>';
-  h += '<g id="fl_ant" class="rfade"><path d="M130,246 L114,210 L100,190 M114,210 L100,214 M108,200 L120,190" stroke="' + C_TF_INK + '" stroke-width="3" fill="none" stroke-linecap="round"/></g>';
-  h += '<g id="fl_hleg" class="rfade" opacity="0"><polyline points="130,246 104,220 114,190 86,166" ' + L + '/></g>';
+  /* 성체 초파리 옆모습 — ①과 같은 그림 · 부위의 색 = 그 체절에서 실제로 발현되는 호미오유전자 */
+  h += '<g transform="translate(46,112) scale(0.92)">' + flySvg('uf', { labels:true }) + '</g>';
   return h;
 }
 function mutCaption(mut){
   var c = bodyCount(mut), parts = [];
-  if (mut.ubx) parts.push('<i>Ubx</i> 의 기능이 상실되어, Ubx 가 발현되던 <b>가슴 셋째 체절</b>에서 Antp(5)가 대신 발현된다. → 이 체절이 가슴 둘째 체절처럼 발생하여 평균곤 대신 <b>날개</b>가 생긴다.');
-  if (mut.antp) parts.push('더듬이가 생길 <b>머리 첫째 체절</b>에서 Antp(5)가 발현된다. → 그 자리에 더듬이 대신 <b>다리</b>가 생긴다.');
+  if (mut.ubx) parts.push('<i>Ubx</i>의 기능이 상실되어, Ubx가 발현되던 <b>가슴 셋째 체절</b>에서 Antp(5)가 대신 발현된다. 그 결과 이 체절이 가슴 둘째 체절처럼 발생하여 평균곤 대신 <b>날개</b>가 생긴다.');
+  if (mut.antp) parts.push('더듬이가 생길 <b>머리 첫째 체절</b>에서 Antp(5)가 발현되어, 그 자리에 더듬이 대신 <b>다리</b>가 생긴다.');
   var tally = '날개 ' + c.wing + '쌍 · 다리 ' + c.leg + '쌍 · 더듬이 ' + c.ant + '쌍' + (c.halt ? ' · 평균곤 ' + c.halt + '쌍' : '');
   if (!parts.length) return '<b>야생형</b> — 체절마다 정해진 호미오유전자가 발현된다. (' + tally + ')';
-  return parts.join('<br>') + '<br><b>지금의 초파리</b>: ' + tally;
+  return parts.join('<br>') + '<br><b>이 초파리</b>: ' + tally;
 }
 function mutApply(){
-  var mut = state.mut, G = segGene(mut), N = segGene({}), c = bodyCount(mut);
+  var mut = state.mut, G = segGene(mut), N = segGene({});
   SEGS.forEach(function(s, j){
     fillTo('us_' + j, GENES8[G[s] - 1].c);
     var t = document.getElementById('ut_' + j); if (t) t.textContent = String(G[s]);
     fadeTo('ur_' + j, G[s] !== N[s] ? 1 : 0);
   });
-  fadeTo('fl_w2', c.wing >= 2 ? 1 : 0);
-  fadeTo('fl_halt', c.halt >= 1 ? 1 : 0);
-  fadeTo('fl_ant', c.ant >= 1 ? 1 : 0);
-  fadeTo('fl_hleg', c.headLeg >= 1 ? 1 : 0);
+  flyApply('uf', G, 0);
 }
 function renderMut(){
   if (!mutMounted){ setHTML('mutStage', mutSvg()); mutMounted = true; }
@@ -1106,21 +1284,21 @@ function toggleMut(k){
   if (state.mut[k]) delete state.mut[k]; else { state.mut[k] = true; state.mutSeen[k] = true; }
   saveState();
   renderMut();
-  if (state.mutSeen.ubx && state.mutSeen.antp) showFb('fb_mut', 'good', '✅ 두 돌연변이를 모두 관찰하였다. 둘 다 켜 보아도 된다. 아래 문항에 답하시오.');
+  if (state.mutSeen.ubx && state.mutSeen.antp) showFb('fb_mut', 'good', '✅ 두 돌연변이를 모두 관찰하였다. 두 스위치를 함께 켜서 비교해도 된다. 아래 문항에 답하시오.');
   updateAll();
 }
 
 /* ══════════════════ 8. ③ 위치 → 정체성 → 분화 ══════════════════
    ★한 국면에 한 사건. 앞 국면의 물체는 남겨 둔다(쌓여 가는 연쇄가 곧 답이다). */
 var CS_LAST = 4;
-var CS_STEP = ['① 둘째 가슴 체절의 세포들', '② 이 자리에서 Antp 가 발현된다', '③ Antp 산물(전사 인자)이 유전자들을 켠다',
+var CS_STEP = ['① 둘째 가슴 체절의 세포들', '② 이 자리에서 Antp가 발현된다', '③ Antp 산물(전사 인자)이 유전자들을 켠다',
                '④ 켜진 유전자의 산물이 또 다른 유전자를 켠다', '⑤ 세포가 분화해 다리·날개가 생긴다'];
 var CS_CAP = [
   '배아의 둘째 가슴 체절(T2)에 있는 세포들이다. 이 세포들은 머리나 배의 세포와 <b>같은 유전자</b>를 모두 가지고 있다.',
-  '이 체절의 세포에서는 호미오유전자 <b>Antp</b> 가 발현된다. 위치에 따라 발현되는 호미오유전자가 정해진다(①).',
+  '이 체절의 세포에서는 호미오유전자 <b>Antp</b>가 발현된다. 위치에 따라 발현되는 호미오유전자가 정해진다(①).',
   'Antp 유전자의 산물은 <b>전사 인자</b>이다. 이 전사 인자가 다리·날개를 만드는 데 필요한 유전자들의 전사를 조절한다.',
   '켜진 유전자들의 산물 가운데에도 전사 인자가 있어, <b>또 다른 유전자</b>의 발현을 조절한다. 유전자발현의 조절이 <b>연쇄적으로</b> 이어진다.',
-  '그 결과 세포들이 분화하여 이 체절에 <b>다리와 날개</b>가 형성된다. → 동물의 발생은 <b>연속적인 유전자발현의 조절</b>로 일어난다.'
+  '그 결과 세포들이 분화하여 이 체절에 <b>다리와 날개</b>가 형성된다. 즉, 동물의 발생은 <b>연속적인 유전자발현의 조절</b>로 일어난다.'
 ];
 var CS_COLX = [80, 225, 370, 515, 650];
 function cascSvg(){
@@ -1160,8 +1338,7 @@ function cascSvg(){
   /* 열 5 — 구조 */
   var x5 = CS_COLX[4];
   h += '<g id="cs_g4" class="rfade" opacity="0">' + arrow(x4 + 56, y, x5 - 30, y, C_SUB) +
-       '<g transform="translate(' + x5 + ',' + (y - 36) + ') scale(1.7) translate(' + (-x5) + ',' + (-(y - 36)) + ')">' + icWing(x5, y - 36) + '</g>' +
-       '<g transform="translate(' + x5 + ',' + (y + 30) + ') scale(1.7) translate(' + (-x5) + ',' + (-(y + 30)) + ')">' + icLeg(x5, y + 30) + '</g>' +
+       '<g transform="translate(' + (x5 - 64) + ',' + (y - 52) + ') scale(0.2)">' + flySvg('cf', {}) + '</g>' +
        txt('', x5, 222, '다리·날개', 14, C_INK, 'middle', '700') + txt('', x5, 240, '(세포분화)', 13, C_SUB, 'middle') + '</g>';
   /* 아래 띠 — 이 활동의 요지 */
   h += '<g id="cs_band" class="rfade" opacity="0"><rect x="20" y="268" width="680" height="40" rx="10" fill="' + C_G5_BG + '" stroke="' + GENES8[4].c + '" stroke-width="2"/>' +
@@ -1182,18 +1359,18 @@ function cmpTable(){
          '<tr><td class="rk">공통점</td><td colspan="3"><b>전사 인자가 다른 유전자의 발현을 조절하고, 그 조절이 이어져</b> 세포가 분화한다.</td></tr></tbody></table>';
 }
 function renderCasc(){
-  if (!cascMounted){ setHTML('cascStage', cascSvg()); cascMounted = true; }
+  if (!cascMounted){ setHTML('cascStage', cascSvg()); cascMounted = true; flyApply('cf', segGene({}), 5); }
   cascApply();
   setHTML('cs_step', '<b>' + CS_STEP[cascPh] + '</b> &nbsp;' + (cascPh + 1) + ' / ' + (CS_LAST + 1));
   setHTML('cs_cap', CS_CAP[cascPh]);
   setHTML('cmpTbl', cmpTable());
   setDisabled('cs_first', cascPh === 0); setDisabled('cs_prev', cascPh === 0);
   setDisabled('cs_next', cascPh === CS_LAST); setDisabled('cs_last', cascPh === CS_LAST);
-  var t = document.getElementById('cascProg'); if (t) t.textContent = '본 단계 ' + (cascPh + 1) + ' / ' + (CS_LAST + 1);
+  var t = document.getElementById('cascProg'); if (t) t.textContent = '단계 ' + (cascPh + 1) + ' / ' + (CS_LAST + 1);
 }
 function cascGo(d){
   cascPh = Math.max(0, Math.min(CS_LAST, cascPh + d));
-  if (cascPh === CS_LAST && !state.cascSeen){ state.cascSeen = true; saveState(); showFb('fb_casc', 'good', '✅ 끝까지 보았다. 왼쪽 아래 표에서 80쪽 MyoD 와 견주고 문항에 답하시오.'); }
+  if (cascPh === CS_LAST && !state.cascSeen){ state.cascSeen = true; saveState(); showFb('fb_casc', 'good', '✅ 모든 단계를 확인하였다. 왼쪽 아래 표에서 80쪽 MyoD와 비교한 뒤 문항에 답하시오.'); }
   renderCasc();
   updateAll();
 }
@@ -1205,8 +1382,8 @@ var IP_CAP = [
   '사람의 피부에서 <b>완전히 분화된 체세포</b>인 섬유아세포를 분리하여 배양한다.',
   '배아줄기세포의 특성을 나타내는 데 중요한 <b>전사 인자 4개의 유전자</b>(OCT4 · SOX2 · KLF4 · cMyc)를 세포에 도입한다.',
   '유전자가 도입된 세포를 분리하여 배양한다. 도입된 전사 인자들이 세포의 <b>유전자발현 양상</b>을 바꾸기 시작한다.',
-  '배아줄기세포와 비슷한 줄기세포의 <b>콜로니</b>가 형성된다 = <b>유도 만능 줄기세포</b>. 분화를 마친 세포가 분화 이전 상태로 돌아갔다(<b>역분화</b>).',
-  '유도 만능 줄기세포는 신경 세포 · 심장 근육 세포 · 간세포 등 <b>여러 종류의 세포로 분화</b>할 수 있다 = <b>다형성능</b>.'
+  '배아줄기세포와 비슷한 줄기세포의 <b>콜로니</b>가 형성된다. 이것이 <b>유도 만능 줄기세포</b>이다. 분화를 마친 세포가 분화 이전의 상태로 돌아간 것이므로 이 과정을 <b>역분화</b>라고 한다.',
+  '유도 만능 줄기세포는 신경 세포 · 심장 근육 세포 · 간세포 등 <b>여러 종류의 세포로 분화</b>할 수 있다. 이러한 능력을 <b>다형성능</b>이라고 한다.'
 ];
 var IP = { cellX:120, cellY:150, dish2X:360, colY:150 };
 function ipsChipHome(i){ return { x:40 + i * 64, y:30 }; }
@@ -1285,11 +1462,11 @@ function renderIps(){
   setHTML('ip_cap', IP_CAP[ipsPh] + (ipsPh === 1 ? '<br><b>도입한 유전자 ' + ipsCount() + ' / 4</b>' : ''));
   setDisabled('ip_first', ipsPh === 0); setDisabled('ip_prev', ipsPh === 0);
   setDisabled('ip_next', ipsPh === IP_LAST); setDisabled('ip_last', ipsPh === IP_LAST);
-  var t = document.getElementById('ipsProg'); if (t) t.textContent = '본 단계 ' + (ipsPh + 1) + ' / ' + (IP_LAST + 1);
+  var t = document.getElementById('ipsProg'); if (t) t.textContent = '단계 ' + (ipsPh + 1) + ' / ' + (IP_LAST + 1);
 }
-/* 다음 국면으로 갈 수 있는가 — 유전자 4개를 다 넣어야 ② 를 넘는다. 단추는 죽이지 않고 까닭을 말한다. */
+/* 다음 국면으로 갈 수 있는가 — 유전자 4개를 다 넣어야 ②를 넘는다. 단추는 죽이지 않고 까닭을 말한다. */
 function ipsBlock(fromPh){
-  if (fromPh >= 1 && ipsCount() < IPS_TF.length) return '교과서의 실험은 전사 인자 유전자 <b>4개</b>를 모두 도입하였다. 아직 ' + (IPS_TF.length - ipsCount()) + '개를 도입하지 않았다 — 위의 칩을 누르시오.';
+  if (fromPh >= 1 && ipsCount() < IPS_TF.length) return '전사 인자 유전자 <b>4개</b>를 모두 도입해야 한다. 남은 유전자 ' + (IPS_TF.length - ipsCount()) + '개를 위에서 누르시오.';
   return '';
 }
 function ipsGo(d){
@@ -1300,7 +1477,7 @@ function ipsGo(d){
   }
   ipsPh = target;
   showFb('fb_ips', '', '');
-  if (ipsPh === IP_LAST && !state.ipsSeen){ state.ipsSeen = true; saveState(); showFb('fb_ips', 'good', '✅ 끝까지 보았다. 아래 문항에 답하시오.'); }
+  if (ipsPh === IP_LAST && !state.ipsSeen){ state.ipsSeen = true; saveState(); showFb('fb_ips', 'good', '✅ 모든 단계를 확인하였다. 아래 문항에 답하시오.'); }
   renderIps();
   updateAll();
 }
@@ -1310,7 +1487,7 @@ function ipsPut(k){
   if (ipsPh < 1) ipsPh = 1;
   if (ipsCount() < IPS_TF.length && ipsPh > 1) ipsPh = 1;   /* ★유전자를 빼면 뒤 국면의 결과가 거짓말이 된다 */
   saveState();
-  if (ipsCount() === IPS_TF.length) showFb('fb_ips', 'good', '✅ 4개를 모두 도입하였다. ▶ 다음 을 누르시오.');
+  if (ipsCount() === IPS_TF.length) showFb('fb_ips', 'good', '✅ 유전자 4개가 모두 도입되었다. ▶ 다음을 누르시오.');
   else showFb('fb_ips', '', '');
   renderIps();
   updateAll();
@@ -1334,9 +1511,9 @@ function renderSort(){
     var k = cardById(id);
     L += '<button type="button" class="cd' + (cardSel === id ? ' sel' : '') + '" onclick="selCard(&#39;' + id + '&#39;)">' + k.t + '</button>';
   });
-  if (!L) L = '<div class="msg good">✅ 카드 8장을 모두 알맞은 칸에 놓았다.</div>';
+  if (!L) L = '<div class="msg good">✅ 카드 8장을 모두 알맞게 분류하였다.</div>';
   setHTML('cardList', L);
-  var t = document.getElementById('sortProg'); if (t) t.textContent = '놓은 카드 ' + sortCount() + ' / ' + CARDS.length;
+  var t = document.getElementById('sortProg'); if (t) t.textContent = '분류한 카드 ' + sortCount() + ' / ' + CARDS.length;
 }
 function selCard(id){ cardSel = (cardSel === id) ? '' : id; renderSort(); }
 /* 판정 — 순수 함수 */
@@ -1367,7 +1544,7 @@ function renderOrg(){
   var box = document.getElementById('orgText');
   if (box){
     if (!u){ box.className = 'msg info hide'; box.innerHTML = ''; }
-    else { box.className = 'msg info'; box.innerHTML = '<b>' + u.t + '</b> — ' + (u.d || '그림 Ⅱ-19 에 나온 활용 분야이다. 교과서 본문에는 자세한 설명이 없다.'); }
+    else { box.className = 'msg info'; box.innerHTML = '<b>' + u.t + '</b> — ' + (u.d || '그림 Ⅱ-19에 나온 활용 분야이다. 교과서 본문에는 자세한 설명이 없다.'); }
   }
   var t = document.getElementById('orgProg'); if (t) t.textContent = '살펴본 활용 ' + orgCount() + ' / ' + ORG_USES.length;
 }
@@ -1386,49 +1563,49 @@ var Q_INTRO = [
     ch:['머리 자리 세포에는 다리를 만드는 데 필요한 유전자가 없다.',
         '두 세포는 같은 유전자를 가지지만, 발현되는 유전자가 서로 다르다.',
         '가슴 자리 세포는 머리 자리 세포보다 유전자를 더 많이 가지고 있다.',
-        '두 세포는 수정란에서 생기는 동안 서로 다른 DNA 를 물려받아 염기 서열이 다르다.'],
+        '두 세포는 체세포 분열 과정에서 서로 다른 DNA를 물려받아 염기 서열이 다르다.'],
     a:1,
     no:['옳지 않다. 체세포는 모두 수정란 하나에서 생겼으므로 같은 유전자를 가진다. 머리 자리 세포에도 그 유전자가 있다.',
         '',
         '옳지 않다. 두 세포가 가진 유전자의 수는 같다(79쪽 복제 생물에서 확인하였다).',
-        '옳지 않다. 체세포 분열로 생긴 세포들은 같은 DNA 를 가진다.'],
+        '옳지 않다. 체세포 분열로 생긴 세포들은 같은 DNA를 가진다.'],
     ex:'79~80쪽에서 확인한 것처럼, 체세포는 모두 같은 유전자를 가지고 <b>발현되는 유전자가 달라</b> 분화한다. ' +
-       '그렇다면 <b>어느 자리</b>에서 어떤 유전자가 발현될지는 무엇이 정하는가? ① 에서 확인한다.' }
+       '그렇다면 몸의 <b>어느 부위</b>에서 어떤 유전자가 발현될지는 무엇이 결정하는가? ①에서 확인하시오.' }
 ];
 var Q_MAP = [
   { id:'q1',
-    q:'① 에서 관찰한 사실로 옳은 것은?',
+    q:'①에서 관찰한 사실로 옳은 것은?',
     ch:['호미오유전자는 성체가 된 뒤에야 처음 발현되기 시작한다.',
         '호미오유전자는 머리 체절의 세포에만 들어 있다.',
         '모든 체절에서 8개의 호미오유전자가 똑같이 함께 발현되어, 체절과 상관없이 같은 구조가 생긴다.',
         '배아의 체절마다 발현되는 호미오유전자가 달라, 체절마다 서로 다른 구조가 생긴다.'],
     a:3,
-    no:['옳지 않다. 호미오유전자는 배아의 체절에서 발현된다(그림 Ⅱ-17 의 「배아의 체절과 호미오유전자 발현 위치」).',
-        '옳지 않다. 모든 체절의 세포가 호미오유전자 8개를 다 가진다. 다른 것은 발현되는 유전자이다.',
+    no:['옳지 않다. 호미오유전자는 배아의 체절에서 발현된다(그림 Ⅱ-17의 「배아의 체절과 호미오유전자 발현 위치」).',
+        '옳지 않다. 모든 체절의 세포가 호미오유전자 8개를 모두 가지며, 체절마다 다른 것은 발현되는 유전자이다.',
         '옳지 않다. 체절마다 발현되는 호미오유전자가 다르고, 그래서 체절마다 구조가 다르다.',
         ''],
     ex:'동물의 초기 배아에서는 각 체절에서 서로 다른 호미오유전자가 발현되며, 그 결과 각 체절의 유전자발현 양상이 달라지고 서로 다른 구조가 형성된다(81쪽).' }
 ];
 var Q_MUT = [
   { id:'q2',
-    q:'② 의 두 돌연변이에서 알 수 있는 것으로 옳은 것은?',
+    q:'②의 두 돌연변이에서 알 수 있는 것으로 옳은 것은?',
     ch:['호미오유전자는 그것이 발현되는 체절에서 어떤 구조가 형성될지를 결정한다.',
         '돌연변이가 생기면 초파리가 가진 유전자의 수가 늘어나 구조가 하나씩 더 생긴다.',
         '더듬이를 만드는 유전자 자체가 다리를 만드는 유전자로 바뀌어 다리가 생겼다.',
         '호미오유전자는 몸의 구조와 관계가 없고, 다른 형질만 결정하는 유전자이다.'],
     a:0,
     no:['',
-        '옳지 않다. Ubx 의 기능이 상실되었는데 날개가 늘었다. 유전자가 늘어난 것이 아니라 그 체절에서 발현되는 호미오유전자가 바뀐 것이다.',
+        '옳지 않다. Ubx의 기능이 상실되었는데 날개가 늘었다. 유전자가 늘어난 것이 아니라 그 체절에서 발현되는 호미오유전자가 바뀐 것이다.',
         '옳지 않다. 바뀐 것은 머리 첫째 체절에서 발현되는 호미오유전자이다. 그 결과 그 자리에서 다리가 형성되었다.',
         '옳지 않다. 호미오유전자에 돌연변이가 생기자 다리·날개 같은 구조가 바뀌었다.'],
     ex:'두 돌연변이 모두 <b>어느 체절에서 어떤 호미오유전자가 발현되는가</b>가 바뀌었고, 그 체절의 구조가 바뀌었다. ' +
-       '이는 Antp·Ubx 가 다리와 날개 형성에 핵심적인 역할을 한다는 것을 뜻한다(81쪽).' }
+       '이는 Antp·Ubx가 다리와 날개 형성에 핵심적인 역할을 한다는 것을 뜻한다(81쪽).' }
 ];
 var Q_CASC = [
   { id:'q3',
     q:'「동물의 발생은 연속적인 유전자발현의 조절로 일어난다」의 뜻으로 옳은 것은?',
     ch:['발생이 진행되는 동안 필요 없어진 유전자가 세포에서 차례로 하나씩 없어져, 결국 세포마다 필요한 유전자만 남게 된다.',
-        '발생이 진행되는 동안 DNA 의 염기 서열이 계속 바뀌어 새로운 세포가 생긴다.',
+        '발생이 진행되는 동안 DNA의 염기 서열이 계속 바뀌어 새로운 세포가 생긴다.',
         '전사 인자가 다른 유전자의 발현을 조절하고, 그 산물이 또 다른 유전자를 조절하는 일이 이어져 세포가 분화한다.',
         '수정란에서 모든 유전자가 한꺼번에 발현된 뒤에는 더 이상 조절되지 않는다.'],
     a:2,
@@ -1440,7 +1617,7 @@ var Q_CASC = [
 ];
 var Q_IPS = [
   { id:'q4',
-    q:'④ 에서 피부 세포가 유도 만능 줄기세포가 될 수 있었던 까닭으로 옳은 것은?',
+    q:'④에서 피부 세포가 유도 만능 줄기세포가 될 수 있었던 까닭으로 옳은 것은?',
     ch:['피부 세포에 없던 유전자 수천 개를 새로 넣어, 피부 세포의 유전체를 통째로 배아줄기세포의 유전체로 바꾸었기 때문이다.',
         '분화한 피부 세포도 모든 유전자를 가지고 있어, 전사 인자 유전자 4개를 넣자 발현 양상이 바뀌었기 때문이다.',
         '피부 세포를 배아와 섞어 배양하였기 때문이다.',
@@ -1478,7 +1655,7 @@ var PRACTICE = [
         '옳지 않다. 더듬이는 그대로이다. 바뀐 것은 가슴 셋째 체절이다.',
         '',
         '옳지 않다. 이 모형에서 날개가 더 생긴 곳은 가슴 셋째 체절 한 곳이다. 배에는 날개가 생기지 않았다.'],
-    ex:'Ubx 가 제 기능을 하지 못하면, Ubx 가 발현되던 가슴 셋째 체절이 가슴 둘째 체절과 같은 구조를 만든다. 그래서 평균곤 자리에 날개가 생겨 날개가 두 쌍이 된다.' },
+    ex:'Ubx가 제 기능을 하지 못하면, Ubx가 발현되던 가슴 셋째 체절이 가슴 둘째 체절과 같은 구조를 만든다. 그래서 평균곤 자리에 날개가 생겨 날개가 두 쌍이 된다.' },
 
   { id:'p2', lv:'쉬움',
     q:'다형성능에 대한 설명으로 옳은 것은?',
@@ -1494,18 +1671,18 @@ var PRACTICE = [
     ex:'다형성능(다분화능, 다능성)은 한 세포가 여러 종류의 세포로 분화할 수 있는 능력으로, 배아줄기세포와 유도 만능 줄기세포가 가진다(82~83쪽).' },
 
   { id:'p3', lv:'중',
-    dat:['가상의 동물 X 의 체절 Ⅰ · Ⅱ · Ⅲ 에서는 각각 호미오유전자 ㉠ · ㉡ · ㉢ 이 발현된다.',
-         '㉠ 이 발현되는 체절에는 더듬이, ㉡ 이 발현되는 체절에는 다리, ㉢ 이 발현되는 체절에는 날개가 생긴다.',
-         '돌연변이체 Y 에서는 체절 Ⅰ 에서 ㉠ 대신 ㉡ 이 발현된다. (다른 조건은 같다.)'],
-    q:'돌연변이체 Y 의 체절 Ⅰ 에 생기는 구조로 옳은 것은?',
+    dat:['가상의 동물 X의 체절 Ⅰ · Ⅱ · Ⅲ 에서는 각각 호미오유전자 ㉠ · ㉡ · ㉢이 발현된다.',
+         '㉠이 발현되는 체절에는 더듬이, ㉡이 발현되는 체절에는 다리, ㉢이 발현되는 체절에는 날개가 생긴다.',
+         '돌연변이체 Y에서는 체절 Ⅰ에서 ㉠ 대신 ㉡이 발현된다. (다른 조건은 같다.)'],
+    q:'돌연변이체 Y의 체절 Ⅰ에 생기는 구조로 옳은 것은?',
     ch:['더듬이', '날개', '아무 구조도 생기지 않는다', '다리'],
     a:3,
-    no:['옳지 않다. 체절 Ⅰ 에서는 더 이상 ㉠ 이 발현되지 않는다.',
-        '옳지 않다. 날개는 ㉢ 이 발현되는 체절에 생긴다.',
-        '옳지 않다. 체절 Ⅰ 에서 ㉡ 이 발현되므로 ㉡ 이 정하는 구조가 생긴다.',
+    no:['옳지 않다. 체절 Ⅰ에서는 더 이상 ㉠이 발현되지 않는다.',
+        '옳지 않다. 날개는 ㉢이 발현되는 체절에 생긴다.',
+        '옳지 않다. 체절 Ⅰ에서 ㉡이 발현되므로 ㉡이 정하는 구조가 생긴다.',
         ''],
-    ex:'구조를 정하는 것은 그 체절에서 <b>발현되는 호미오유전자</b>이다. 체절 Ⅰ 에서 ㉡ 이 발현되므로 다리가 생긴다 — 더듬이 자리에 다리가 생긴 Antp 돌연변이와 같은 판단이다.',
-    hint:['체절 Ⅰ 에서 발현되는 호미오유전자가 무엇으로 바뀌었는지 먼저 보시오.',
+    ex:'구조를 정하는 것은 그 체절에서 <b>발현되는 호미오유전자</b>이다. 체절 Ⅰ에서 ㉡이 발현되므로 다리가 생긴다 — 더듬이 자리에 다리가 생긴 Antp 돌연변이와 같은 판단이다.',
+    hint:['체절 Ⅰ에서 발현되는 호미오유전자가 무엇으로 바뀌었는지 먼저 보시오.',
           '구조는 체절의 위치가 아니라, 그 체절에서 발현되는 호미오유전자가 정한다.'] },
 
   { id:'p4', lv:'중',
@@ -1532,9 +1709,9 @@ var WRITEQ = [
     ans:'호미오유전자의 산물은 유전자발현을 조절하는 전사 인자이다. 초파리 배아의 각 체절에서는 서로 다른 호미오유전자가 발현되어 체절마다 유전자발현 양상이 달라지고, ' +
         '그 결과 각 체절에서 서로 다른 구조가 형성된다. 예를 들어 Ubx 유전자의 기능이 상실되면 날개가 한 쌍 더 생기고, Antp 유전자에 돌연변이가 생기면 더듬이 자리에 다리가 생긴다.' },
   { id:'w2', min:60,
-    q:'80쪽의 MyoD 와 81쪽의 호미오유전자의 공통점을 들어, 「동물의 발생은 연속적인 유전자발현의 조절로 일어난다」는 말의 뜻을 설명하시오.',
+    q:'80쪽의 MyoD와 81쪽의 호미오유전자의 공통점을 들어, 「동물의 발생은 연속적인 유전자발현의 조절로 일어난다」는 말의 뜻을 설명하시오.',
     need:['둘 다 전사 인자라는 점', '다른 유전자의 발현을 조절하고 그 조절이 이어진다는 점', '세포의 종류(MyoD)와 몸의 구조(호미오유전자)'],
-    ans:'MyoD 와 호미오유전자 산물은 모두 전사 인자이다. MyoD 는 근육 특이적 유전자와 또 다른 전사 인자의 발현을 조절해 근육 세포로의 분화를 이끌고, ' +
+    ans:'MyoD와 호미오유전자 산물은 모두 전사 인자이다. MyoD는 근육 특이적 유전자와 또 다른 전사 인자의 발현을 조절해 근육 세포로의 분화를 이끌고, ' +
         '호미오유전자 산물은 각 체절에서 구조를 만드는 유전자들의 발현을 조절해 다리나 날개 같은 구조를 형성한다. ' +
         '이처럼 모든 세포가 같은 유전자를 가지더라도, 전사 인자가 다른 유전자의 발현을 조절하고 그 산물이 다시 또 다른 유전자를 조절하는 일이 이어지면서 세포가 분화하고 몸의 구조가 만들어진다.' },
   { id:'w3', min:50,
@@ -1758,24 +1935,24 @@ function unlockDraft(){
    ★칸마다 자기가 만든 것만 지운다. 다른 칸은 건드리지 않는다. 새로고침하지 않는다. */
 var SEC_DEF = {
   intro: { qs:function(){ return Q_INTRO; }, ask:false, fb:'',        msg:'⓪ 의 문항을 지웠다.', run:function(){} },
-  map:   { qs:function(){ return Q_MAP; },   ask:false, fb:'fb_map',  msg:'① 의 관찰과 문항을 지웠다.',
-           run:function(){ state.mapSel = 0; state.mapSeen = {}; } },
-  mut:   { qs:function(){ return Q_MUT; },   ask:false, fb:'fb_mut',  msg:'② 의 스위치를 모두 끄고 문항을 지웠다.',
+  map:   { qs:function(){ return Q_MAP; },   ask:false, fb:'fb_map',  msg:'①의 관찰과 문항을 지웠다.',
+           run:function(){ state.mapSel = 0; state.mapSeen = {}; state.homSel = ''; state.homSeen = {}; } },
+  mut:   { qs:function(){ return Q_MUT; },   ask:false, fb:'fb_mut',  msg:'②의 스위치를 모두 끄고 문항을 지웠다.',
            run:function(){ state.mut = {}; state.mutSeen = {}; } },
-  casc:  { qs:function(){ return Q_CASC; },  ask:false, fb:'fb_casc', msg:'③ 을 처음 단계로 되돌리고 문항을 지웠다.',
+  casc:  { qs:function(){ return Q_CASC; },  ask:false, fb:'fb_casc', msg:'③을 처음 단계로 되돌리고 문항을 지웠다.',
            run:function(){ state.cascSeen = false; cascPh = 0; } },
-  ips:   { qs:function(){ return Q_IPS; },   ask:false, fb:'fb_ips',  msg:'④ 를 처음 단계로 되돌리고, 도입한 유전자와 문항을 지웠다.',
+  ips:   { qs:function(){ return Q_IPS; },   ask:false, fb:'fb_ips',  msg:'④를 처음 단계로 되돌리고, 도입한 유전자와 문항을 지웠다.',
            run:function(){ state.ipsSeen = false; state.ipsIn = {}; ipsPh = 0; } },
-  sort:  { qs:function(){ return []; },      ask:true,  fb:'fb_sort', msg:'⑤ 의 카드를 모두 거두었다 — 다시 놓으시오.',
+  sort:  { qs:function(){ return []; },      ask:true,  fb:'fb_sort', msg:'⑤의 카드를 모두 거두었다 — 다시 놓으시오.',
            run:function(){ state.sortPut = {}; cardSel = ''; } },
-  org:   { qs:function(){ return Q_ORG; },   ask:false, fb:'fb_org',  msg:'⑥ 의 관찰과 문항을 지웠다.',
+  org:   { qs:function(){ return Q_ORG; },   ask:false, fb:'fb_org',  msg:'⑥의 관찰과 문항을 지웠다.',
            run:function(){ state.orgSeen = {}; state.orgSel = ''; } },
   prac:  { prac:true,  ask:false, fb:'', msg:'💪 의 문항을 지웠다.' },
-  write: { write:true, ask:true,  fb:'', msg:'⑦ 에 적은 답안과 자기평가를 지웠다.' }
+  write: { write:true, ask:true,  fb:'', msg:'⑦에 적은 답안과 자기평가를 지웠다.' }
 };
 var SEC_ASK = {
-  sort:  '⑤ 에 놓은 카드를 모두 거두고 이 단계만 다시 하시겠습니까? (다른 단계는 그대로 둔다)',
-  write: '⑦ 에 적은 답안을 모두 지우고 이 단계만 다시 하시겠습니까? (다른 단계는 그대로 둔다)'
+  sort:  '⑤에 놓은 카드를 모두 거두고 이 단계만 다시 하시겠습니까? (다른 단계는 그대로 둔다)',
+  write: '⑦에 적은 답안을 모두 지우고 이 단계만 다시 하시겠습니까? (다른 단계는 그대로 둔다)'
 };
 function resetSec(key){
   var d = SEC_DEF[key];
@@ -1798,17 +1975,15 @@ function resetAll(){
   try{ localStorage.removeItem(LS_KEY); }catch(e){}
   state = freshState();
   cardSel = ''; cascPh = 0; ipsPh = 0;
-  mapMounted = false; mutMounted = false; cascMounted = false; ipsMounted = false;
+  mapMounted = false; mutMounted = false; cascMounted = false; ipsMounted = false; homMounted = false;
   if (typeof location !== 'undefined' && location.reload) location.reload();
 }
 
 /* ══════════════════ 18. 시작 ══════════════════ */
 function legendFill(){
   setHTML('map_lg',
-    lgItem(icAnt(14, 16), 28, 34, '0 0 28 34', '더듬이') +
-    lgItem(icLeg(14, 17), 28, 40, '0 0 28 40', '다리') +
-    lgItem(icWing(20, 14), 40, 28, '0 0 40 28', '날개') +
-    lgItem(icHalt(14, 16), 28, 30, '0 0 28 30', '평균곤(날개가 변한 작은 곤봉 모양 기관)'));
+    lgItem('<rect x="2" y="4" width="30" height="18" rx="5" fill="' + GENES8[4].c + '"/><text x="17" y="18" font-size="13" fill="#fff" text-anchor="middle" font-weight="800">5</text>', 34, 26, '0 0 34 26', '색과 번호 = 그 체절에서 발현되는 호미오유전자') +
+    lgItem('<line x1="8" y1="26" x2="16" y2="10" stroke="' + GENES8[5].c + '" stroke-width="3"/><circle cx="17" cy="8" r="5" fill="' + GENES8[5].c + '"/>', 28, 30, '0 0 28 30', '평균곤 — 뒷날개가 변한 작은 곤봉 모양 기관'));
   setHTML('mut_lg',
     lgItem('<rect x="2" y="3" width="30" height="20" rx="5" fill="' + GENES8[4].c + '"/><text x="17" y="18" font-size="13" fill="#fff" text-anchor="middle" font-weight="800">5</text>', 34, 26, '0 0 34 26', '체절에서 발현되는 호미오유전자(번호)') +
     lgItem('<rect x="2" y="2" width="30" height="22" rx="6" fill="none" stroke="' + C_INK + '" stroke-width="2.5" stroke-dasharray="5,3"/>', 34, 26, '0 0 34 26', '발현이 바뀐 체절'));
@@ -1818,6 +1993,7 @@ function legendFill(){
 }
 function restoreUI(){
   renderPage();
+  renderHom();
   renderMap();
   renderMut();
   renderCasc();
@@ -1846,7 +2022,7 @@ function init(){
   var saved = loadState();
   state = freshState();
   if (saved){
-    /* ★freshState() 가 정의한 칸만 복원한다. ★★typeof null === 'object' — null 을 걸러 낸다. */
+    /* ★freshState()가 정의한 칸만 복원한다. ★★typeof null === 'object' — null을 걸러 낸다. */
     Object.keys(state).forEach(function(k){
       var sv = saved[k];
       if (sv === undefined || sv === null) return;
@@ -1857,11 +2033,13 @@ function init(){
       else if (typeof sv === typeof state[k]){ state[k] = sv; }
     });
   }
-  ['mapSeen', 'mut', 'mutSeen', 'ipsIn', 'sortPut', 'orgSeen', 'qPick', 'pPick', 'ta', 'self'].forEach(function(k){
+  ['homSeen', 'mapSeen', 'mut', 'mutSeen', 'ipsIn', 'sortPut', 'orgSeen', 'qPick', 'pPick', 'ta', 'self'].forEach(function(k){
     if (!state[k] || typeof state[k] !== 'object' || Array.isArray(state[k])) state[k] = {};
   });
   /* ★범위 밖의 값·없는 이름은 걸러 낸다 */
   state.page = (state.page === 2) ? 2 : 1;
+  if (!homBy(state.homSel)) state.homSel = '';
+  Object.keys(state.homSeen).forEach(function(k){ if (!homBy(k) || state.homSeen[k] !== true) delete state.homSeen[k]; });
   state.mapSel = Math.round(Number(state.mapSel));
   if (!(state.mapSel >= 0 && state.mapSel <= 8)) state.mapSel = 0;
   Object.keys(state.mapSeen).forEach(function(k){ if (!/^[1-8]$/.test(k) || state.mapSeen[k] !== true) delete state.mapSeen[k]; });

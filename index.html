@@ -32,7 +32,7 @@ try {
      특히 81쪽이 세포분화·발생에서 갖는 뜻 — 80쪽 「전사 인자가 세포의 종류를 정한다」에서
      81쪽 「전사 인자(호미오유전자 산물)가 몸의 어느 자리에 무슨 구조가 생길지를 정한다」로 넘어가
      「발생은 연속적인 유전자발현의 조절」에 닿게 한다 → ⓪ 잇기 · ③ 위치→정체성→분화 · 정리하기 2번.
-   ★두 쪽: 1쪽 = 81쪽(⓪~③) · 2쪽 = 83쪽(④~⑥) + 💪 + ⑦ 정리하기.
+   ★두 쪽: 1쪽 = 81쪽(⓪~③) · 2쪽 = 82~83쪽(④ 역분화 · ⑤ 다형성능 · ⑥ 비교 · ⑦ 오가노이드) + 💪 + ⑧ 정리하기.
    ★카드는 처음부터 다 열려 있고 칸마다 되돌리기가 있다(2026-09-01 규약). 정오는 기록하지 않는다.
    ══════════════════════════════════════════════════════════════ */
 :root{
@@ -304,6 +304,13 @@ footer{text-align:center;margin-top:22px;}
 .homintro h3{margin:2px 0 10px;font-size:18px;color:#5321A8;}
 .hchip{font:inherit;font-size:16px;font-weight:700;min-height:48px;padding:6px 14px;margin:4px;border-radius:12px;border:2px solid #6C2BD9;background:#fff;color:#5321A8;cursor:pointer;}
 .hchip.on{background:#6C2BD9;color:#fff;}
+.hchip.stem{border-color:var(--stem);color:var(--stem);}
+.hchip.stem.on{background:var(--stem);color:#fff;}
+.pluridef{margin:0 0 14px;padding:14px 18px;border:3px solid var(--stem);border-radius:14px;background:var(--stem-bg);font-size:20px;line-height:1.6;color:#4A148C;text-align:center;}
+.pluridef small{font-size:15px;color:#6A1B9A;margin:0 4px;}
+.plhd{font-weight:800;margin:12px 0 2px;color:#4A148C;}
+.pluri-sum ul{margin:6px 0 0;padding-left:20px;}
+.btnrow .btn.stem{margin:4px 6px 4px 0;}
 .hchip.seen:not(.on)::after{content:" ✓";}
 @media (prefers-reduced-motion: reduce){
   .rfade,.rmove,.rfill{transition:none !important;}
@@ -524,8 +531,8 @@ html:not(.unlocked) #draftGate{display:flex;}
     </div>
     <div class="panes">
       <div class="pane-l">
-        <div class="stage-wrap"><svg class="stage" id="ipsStage" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img"
-             aria-label="피부 섬유아세포에 전사 인자 유전자 4개를 도입하여 배양하면 줄기세포 콜로니가 형성되고, 이 유도 만능 줄기세포는 신경 세포·심장 근육 세포·간세포 등 여러 종류의 세포로 분화할 수 있다."></svg></div>
+        <div class="stage-wrap"><svg class="stage" id="ipsStage" viewBox="0 0 720 424" xmlns="http://www.w3.org/2000/svg" role="img"
+             aria-label="위는 세포의 모습과 배아줄기세포와 닮은 정도, 아래는 세포의 유전자 발현판이다. 피부 섬유아세포에 전사 인자 유전자 4개를 도입하면 배아줄기세포 특성 유전자가 켜지고 섬유아세포 특성 유전자가 꺼져, 유도 만능 줄기세포가 된다. 유전자는 그대로이고 발현 양상이 바뀐다."></svg></div>
         <div class="anibar">
           <button type="button" class="btn sm ghost" id="ip_first" onclick="ipsGo(-99)">⏮</button>
           <button type="button" class="btn sm ghost" id="ip_prev" onclick="ipsGo(-1)">◀ 이전</button>
@@ -538,13 +545,14 @@ html:not(.unlocked) #draftGate{display:flex;}
       </div>
       <div class="pane-r">
         <div class="pr-do">
-          <div class="taskbar">▶ 다음을 눌러 실험을 진행하시오. 두 번째 단계에서는 아래 <b>전사 인자 유전자 4개</b>를 눌러 피부 세포에 도입하시오.</div>
+          <div class="taskbar">▶ 다음을 눌러 실험을 진행하시오. 두 번째 단계에서는 아래 <b>전사 인자 유전자 4개</b>를 눌러 피부 세포에 도입하시오. 단계마다 무대 아래 <b>유전자 발현판</b>이 어떻게 바뀌는지 관찰하시오.</div>
           <div class="chiprow" id="tfChips"></div>
           <div class="panel">
             <div class="ptitle">🔎 알아 둘 것 — 83쪽</div>
             <ul>
               <li><b>배아줄기세포</b> — 발생 초기 배아 안쪽의 세포 덩어리(내부 세포괴)에서 얻는다. 모든 세포로 분화할 수 있는 <b>다형성능</b>을 갖는다.</li>
-              <li><b>다형성능</b> — 한 세포가 여러 종류의 세포로 분화할 수 있는 능력.</li>
+              <li><b>다형성능</b> — 한 세포가 여러 종류의 세포로 분화할 수 있는 능력(⑤에서 자세히).</li>
+              <li>발현판의 유전자 이름(섬유아 ①~④, 그 밖의)은 모형이다. 이름이 나온 것은 교과서의 전사 인자 4개뿐이다.</li>
               <li><b>역분화</b> — 분화를 마친 세포가 분화 이전의 상태로 돌아가는 것.</li>
             </ul>
           </div>
@@ -560,10 +568,52 @@ html:not(.unlocked) #draftGate{display:flex;}
     <div class="secreset"><button type="button" onclick="resetSec('ips')">↻ ④ 처음 단계로 되돌리기</button></div>
   </div>
 
-  <!-- ══ ⑤ 배아줄기세포 vs 유도 만능 줄기세포 ══ -->
+  <!-- ══ ⑤ 다형성능 ══ -->
+  <div class="card split" id="cardPluri" data-hub-card="s7">
+    <div class="hd">
+      <h2 class="stem">⑤ 다형성능 — 한 세포에서 여러 종류의 세포로<span class="yr">교과서 82~83쪽</span></h2>
+    </div>
+    <div class="pluridef">⭐ <b>다형성능</b><small>(다분화능, 다능성)</small> = <b>한 세포</b>가 <b>여러 종류의 세포</b>로 분화할 수 있는 능력</div>
+    <div class="panes">
+      <div class="pane-l">
+        <div class="stage-wrap"><svg class="stage" id="pluriStage" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img"
+             aria-label="왼쪽은 고른 출발 세포, 오른쪽은 신경 세포 · 심장 근육 세포 · 간세포 칸이다. 줄기세포를 고르면 같은 세포 하나에서 세 종류의 세포가 모두 만들어지고, 피부 섬유아세포를 고르면 분화하지 않는다."></svg></div>
+        <div class="anicap stem" id="pl_cap"></div>
+      </div>
+      <div class="pane-r">
+        <div class="pr-do">
+          <div class="taskbar">출발 세포를 고른 뒤 분화 조건 단추를 눌러, 어떤 세포가 만들어지는지 확인하시오. <b>유도 만능 줄기세포</b>로 세 종류를 모두 만들고, <b>피부 섬유아세포</b>로도 시도해 보시오.</div>
+          <div class="plhd">출발 세포</div>
+          <div class="chiprow" id="plSrcChips"></div>
+          <div class="plhd">분화 조건</div>
+          <div class="btnrow" id="plTgtBtns"></div>
+          <div class="msg hide" id="fb_pluri"></div>
+          <div class="msg good pluri-sum" id="pl_sum" style="display:none">✅ <b>정리 — 다형성능</b><br>
+            <b>유도 만능 줄기세포 하나</b>에서 신경 세포 · 심장 근육 세포 · 간세포가 <b>모두</b> 만들어졌다. 이처럼 한 세포가 여러 종류의 세포로 분화할 수 있는 능력이 <b>다형성능</b>이다.
+            <ul>
+              <li>다형성능이 <b>있다</b> — 배아줄기세포(82쪽), 유도 만능 줄기세포(83쪽)</li>
+              <li>다형성능이 <b>없다</b> — 분화를 마친 체세포(피부 섬유아세포 등)</li>
+              <li>다형성능이 있으므로 원하는 세포로 분화시켜 <b>손상된 조직이나 기관을 회복</b>시키거나 <b>오가노이드</b>를 만드는 데 쓸 수 있다(83쪽).</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <div class="ptitle">⚠ 헷갈리기 쉬운 것</div>
+            <ul>
+              <li>세포가 <b>분열해 수가 늘어나는 것</b>은 다형성능이 아니다 — 같은 종류의 세포가 늘어날 뿐이다.</li>
+              <li>다형성능은 <b>종류</b>의 문제이다. 한 세포에서 <b>서로 다른 종류</b>의 세포가 만들어질 수 있는가를 묻는다.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pr-q"><div id="pluriQ"></div></div>
+      </div>
+    </div>
+    <div class="secreset"><button type="button" onclick="resetSec('pluri')">↻ ⑤ 다시 하기</button></div>
+  </div>
+
+  <!-- ══ ⑥ 배아줄기세포 vs 유도 만능 줄기세포 ══ -->
   <div class="card split" id="cardSort" data-hub-card="s5">
     <div class="hd">
-      <h2 class="stem">⑤ 배아줄기세포 vs 유도 만능 줄기세포<span class="yr">교과서 83쪽</span></h2>
+      <h2 class="stem">⑥ 배아줄기세포 vs 유도 만능 줄기세포<span class="yr">교과서 83쪽</span></h2>
       <span class="tag" id="sortProg">분류한 카드 0 / 8</span>
     </div>
     <div class="panes">
@@ -590,13 +640,13 @@ html:not(.unlocked) #draftGate{display:flex;}
         <div class="pr-q"></div>
       </div>
     </div>
-    <div class="secreset"><button type="button" onclick="resetSec('sort')">↻ ⑤ 다시 하기</button></div>
+    <div class="secreset"><button type="button" onclick="resetSec('sort')">↻ ⑥ 다시 하기</button></div>
   </div>
 
-  <!-- ══ ⑥ 오가노이드 ══ -->
+  <!-- ══ ⑦ 오가노이드 ══ -->
   <div class="card split" id="cardOrg" data-hub-card="s6">
     <div class="hd">
-      <h2 class="stem">⑥ 오가노이드의 활용<span class="yr">교과서 83쪽 그림 Ⅱ-19</span></h2>
+      <h2 class="stem">⑦ 오가노이드의 활용<span class="yr">교과서 83쪽 그림 Ⅱ-19</span></h2>
       <span class="tag" id="orgProg">살펴본 활용 0 / 6</span>
     </div>
     <div class="panes">
@@ -615,7 +665,7 @@ html:not(.unlocked) #draftGate{display:flex;}
         <div class="pr-q"><div id="orgQ"></div></div>
       </div>
     </div>
-    <div class="secreset"><button type="button" onclick="resetSec('org')">↻ ⑥ 다시 하기</button></div>
+    <div class="secreset"><button type="button" onclick="resetSec('org')">↻ ⑦ 다시 하기</button></div>
   </div>
 
   <!-- ══ 💪 더 풀어 보기 ══ -->
@@ -629,16 +679,16 @@ html:not(.unlocked) #draftGate{display:flex;}
     <div class="secreset"><button type="button" onclick="resetSec('prac')">↻ 💪 다시 풀기</button></div>
   </div>
 
-  <!-- ══ ⑦ 정리하기 ══ -->
+  <!-- ══ ⑧ 정리하기 ══ -->
   <div class="card" data-hub-card="wrap">
     <div class="hd">
-      <h2 class="green">⑦ 정리하기</h2>
+      <h2 class="green">⑧ 정리하기</h2>
       <span class="tag" id="writeProg">작성한 문항 0 / 3</span>
     </div>
     <p class="sub">활동에서 확인한 내용을 바탕으로 서술하시오. 일정 분량 이상 서술하면 모범답안을 볼 수 있다.</p>
     <div id="writeBox"></div>
     <div class="selfcheck" id="selfBox"></div>
-    <div class="secreset"><button type="button" onclick="resetSec('write')">↻ ⑦ 다시 하기</button></div>
+    <div class="secreset"><button type="button" onclick="resetSec('write')">↻ ⑧ 다시 하기</button></div>
   </div>
 </div>
 
@@ -916,8 +966,12 @@ function freshState(){
     cascSeen:false,    /* ③ 마지막 국면까지 보았는가 */
     ipsIn:{},          /* ④ 도입한 전사 인자 유전자 { OCT4:true } */
     ipsSeen:false,     /* ④ 마지막 국면까지 보았는가 */
-    sortPut:{},        /* ⑤ 맞는 칸에 놓은 카드 */
-    orgSeen:{},        /* ⑥ 살펴본 활용 */
+    plSrc:'ips',       /* ⑤ 고른 출발 세포 */
+    plMade:{},         /* ⑤ 만들어 낸 세포 { 'ips_neu':true } */
+    plLast:'',         /* ⑤ 마지막 시도 */
+    plFib:false,       /* ⑤ 피부 섬유아세포로 시도해 보았는가 */
+    sortPut:{},        /* ⑥ 맞는 칸에 놓은 카드 */
+    orgSeen:{},        /* ⑦ 살펴본 활용 */
     orgSel:'',
     qPick:{}, pPick:{}, ta:{}, self:{},
     teacherUnlock:false,
@@ -975,13 +1029,14 @@ function loadState(){
 /* ══════════════════ 4. 진행 레일 · 완료 판정 ══════════════════
    ★막는 데 쓰지 않는다. 카드는 처음부터 다 열려 있다(2026-09-01 규약). */
 var STEPS = [
-  { key:'intro', no:'⓪', name:'앞 시간과 잇기', sub:'79~80쪽' },
-  { key:'map',   no:'①', name:'호미오유전자 지도', sub:'유전자 3개 이상' },
+  { key:'intro', no:'⓪', name:'앞 활동 돌아보기', sub:'79~80쪽' },
+  { key:'map',   no:'①', name:'체절과 호미오유전자', sub:'유전자 3개 이상' },
   { key:'mut',   no:'②', name:'돌연변이', sub:'Ubx · Antp' },
   { key:'casc',  no:'③', name:'위치→분화', sub:'80쪽과 비교' },
   { key:'ips',   no:'④', name:'역분화', sub:'전사 인자 4개' },
-  { key:'sort',  no:'⑤', name:'줄기세포 비교', sub:'카드 8장' },
-  { key:'org',   no:'⑥', name:'오가노이드', sub:'활용 3개 이상' }
+  { key:'pluri', no:'⑤', name:'다형성능', sub:'세 종류로 분화' },
+  { key:'sort',  no:'⑥', name:'줄기세포 비교', sub:'카드 8장' },
+  { key:'org',   no:'⑦', name:'오가노이드', sub:'활용 3개 이상' }
 ];
 var MAP_NEED = 3;
 function mapSeenCount(){ return Object.keys(state.mapSeen).length; }
@@ -994,6 +1049,7 @@ function stepDone(k){
   if (k === 'mut')   return !!state.mutSeen.ubx && !!state.mutSeen.antp && answeredOf(Q_MUT, state.qPick) === Q_MUT.length;
   if (k === 'casc')  return !!state.cascSeen && answeredOf(Q_CASC, state.qPick) === Q_CASC.length;
   if (k === 'ips')   return !!state.ipsSeen && answeredOf(Q_IPS, state.qPick) === Q_IPS.length;
+  if (k === 'pluri') return pluriDone() && answeredOf(Q_PLURI, state.qPick) === Q_PLURI.length;
   if (k === 'sort')  return sortCount() === CARDS.length;
   if (k === 'org')   return orgCount() >= ORG_NEED && answeredOf(Q_ORG, state.qPick) === Q_ORG.length;
   return false;
@@ -1375,79 +1431,101 @@ function cascGo(d){
   updateAll();
 }
 
-/* ══════════════════ 9. ④ 역분화 ══════════════════ */
+/* ══════════════════ 9. ④ 역분화 ══════════════════
+   ★요지: 유전자는 그대로이고(79쪽) 켜진 유전자 — 유전자발현 양상 — 가 섬유아세포 양상에서 배아줄기세포 양상으로 바뀐다(83쪽).
+   무대 아래의 「유전자 발현판」이 주인공이다. 램프 상태는 ipsLamp() 하나에서 나온다(무대·닮은 정도 공용). */
 var IP_LAST = 4;
-var IP_STEP = ['① 피부 섬유아세포 분리·배양', '② 전사 인자 유전자 4개 도입', '③ 유전자 도입 세포 분리·배양', '④ 줄기세포 콜로니 형성', '⑤ 여러 종류의 세포로 분화'];
+var IP_STEP = ['① 피부 섬유아세포', '② 전사 인자 유전자 4개 도입', '③ 전사 인자가 유전자발현을 바꾼다', '④ 유도 만능 줄기세포', '⑤ 바뀐 것은 무엇인가?'];
 var IP_CAP = [
-  '사람의 피부에서 <b>완전히 분화된 체세포</b>인 섬유아세포를 분리하여 배양한다.',
+  '사람의 피부에서 분리한 <b>섬유아세포</b>는 분화를 마친 체세포이다. 이 세포도 <b>모든 유전자</b>를 가지고 있지만(79쪽), 아래 발현판처럼 <b>섬유아세포 특성 유전자만 켜져</b> 있다.',
   '배아줄기세포의 특성을 나타내는 데 중요한 <b>전사 인자 4개의 유전자</b>(OCT4 · SOX2 · KLF4 · cMyc)를 세포에 도입한다.',
-  '유전자가 도입된 세포를 분리하여 배양한다. 도입된 전사 인자들이 세포의 <b>유전자발현 양상</b>을 바꾸기 시작한다.',
-  '배아줄기세포와 비슷한 줄기세포의 <b>콜로니</b>가 형성된다. 이것이 <b>유도 만능 줄기세포</b>이다. 분화를 마친 세포가 분화 이전의 상태로 돌아간 것이므로 이 과정을 <b>역분화</b>라고 한다.',
-  '유도 만능 줄기세포는 신경 세포 · 심장 근육 세포 · 간세포 등 <b>여러 종류의 세포로 분화</b>할 수 있다. 이러한 능력을 <b>다형성능</b>이라고 한다.'
+  '도입한 유전자에서 만들어진 <b>전사 인자</b>가 다른 유전자들의 전사를 조절한다. 세포가 원래 가지고 있던 <b>배아줄기세포 특성 유전자</b>가 켜지고, 섬유아세포 특성 유전자는 꺼져 간다.',
+  '발현 양상이 <b>배아줄기세포와 비슷해진</b> 세포들이 <b>콜로니</b>를 이루며 자란다. 이것이 <b>유도 만능 줄기세포</b>이다. 분화를 마친 세포가 분화 이전의 상태로 돌아갔으므로 <b>역분화</b>라고 한다.',
+  '세포가 가진 유전자는 처음과 같다(도입한 4개를 빼면). <b>바뀐 것은 유전자가 아니라 유전자발현 양상</b>이다. 80쪽에서 세포의 종류를 정한 것이 전사 인자였듯이, 전사 인자 4개가 세포를 줄기세포 상태로 되돌렸다. 이 세포가 무엇을 할 수 있는지는 ⑤에서 확인하시오.'
 ];
-var IP = { cellX:120, cellY:150, dish2X:360, colY:150 };
-function ipsChipHome(i){ return { x:40 + i * 64, y:30 }; }
-function ipsChipIn(i){ return { x:IP.cellX - 26 + (i % 2) * 26, y:IP.cellY - 14 + Math.floor(i / 2) * 18 }; }
-/* 칩 자리 — 순수 함수. 도입했으면 핵 안, 아니면 위 선반 */
+var IP_WHO = ['피부 섬유아세포', '유전자를 도입한 섬유아세포', '발현이 바뀌고 있는 세포', '유도 만능 줄기세포', '유도 만능 줄기세포'];
+var IP_LAMPS = [
+  { g:'F', id:'f1', t:'섬유아 ①', x:30,  y:290 }, { g:'F', id:'f2', t:'섬유아 ②', x:104, y:290 },
+  { g:'F', id:'f3', t:'섬유아 ③', x:30,  y:342 }, { g:'F', id:'f4', t:'섬유아 ④', x:104, y:342 },
+  { g:'E', id:'OCT4', t:'OCT4', x:262, y:290 }, { g:'E', id:'SOX2', t:'SOX2', x:336, y:290 }, { g:'E', id:'KLF4', t:'KLF4', x:410, y:290 },
+  { g:'E', id:'cMyc', t:'cMyc', x:262, y:342 }, { g:'E', id:'etc', t:'그 밖의', x:336, y:342 },
+  { g:'O', id:'neu', t:'신경', x:548, y:290 }, { g:'O', id:'heart', t:'심장 근육', x:622, y:290 }, { g:'O', id:'liver', t:'간', x:548, y:342 }
+];
+var IP_ES = { F:0, E:1, O:0 };   /* 배아줄기세포의 발현 양상 */
+/* 램프 — 1 켜짐 · 0.5 꺼지는 중 · 0 꺼짐. 유전자 4개를 다 넣지 않으면 뒤 국면으로 가지 않는다(ipsBlock). */
+function ipsLamp(g, ph, allIn){
+  if (g === 'F') return (allIn && ph >= 3) ? 0 : ((allIn && ph === 2) ? 0.5 : 1);
+  if (g === 'E') return (allIn && ph >= 2) ? 1 : 0;
+  return 0;
+}
+/* 배아줄기세포와 발현 양상이 닮은 정도(%) — 순수 함수 */
+function ipsMatch(ph, allIn){
+  var n = 0;
+  IP_LAMPS.forEach(function(L){ if ((ipsLamp(L.g, ph, allIn) >= 0.5 ? 1 : 0) === IP_ES[L.g]) n++; });
+  return Math.round(n / IP_LAMPS.length * 100);
+}
+var IP = { cx:160, cy:116 };
+function ipsChipHome(i){ return { x:24 + i * 62, y:6 }; }
+function ipsChipIn(i){ return { x:IP.cx - 28 + (i % 2) * 30, y:IP.cy - 14 + Math.floor(i / 2) * 14 }; }
 function ipsChipPos(k, inMap){
   var i = IPS_TF.indexOf(k);
-  return inMap[k] ? { p:ipsChipIn(i), sc:0.55 } : { p:ipsChipHome(i), sc:1 };
+  return inMap[k] ? { p:ipsChipIn(i), sc:0.5 } : { p:ipsChipHome(i), sc:0.9 };
 }
 function ipsSvg(){
   var h = '';
-  /* 접시 1 + 섬유아세포 */
-  h += '<ellipse cx="' + IP.cellX + '" cy="285" rx="88" ry="24" fill="#F4F8FB" stroke="#8FA3B5" stroke-width="2"/>';
-  [[-44, 282], [0, 288], [42, 280]].forEach(function(o){
-    h += '<ellipse cx="' + (IP.cellX + o[0]) + '" cy="' + o[1] + '" rx="18" ry="6" fill="#E9B98C" stroke="#A0703F" stroke-width="1.5"/>';
+  /* 섬유아세포 — 길쭉한 방추형 */
+  h += '<g id="ip_fib" class="rfade"><path id="ip_fibb" class="rfill" d="M40,120 Q92,70 160,82 Q240,68 290,114 Q238,156 160,154 Q88,166 40,120 Z" style="fill:#F6DCC2" stroke="#A0703F" stroke-width="2.5"/>' +
+       '<ellipse cx="' + IP.cx + '" cy="' + IP.cy + '" rx="36" ry="22" fill="#EBC9A6" stroke="#A0703F" stroke-width="1.5"/></g>';
+  /* 줄기세포 콜로니 — 둥근 세포 · 큰 핵 */
+  var col = '';
+  [[0, 0], [54, 0], [-54, 0], [27, -46], [-27, -46], [27, 46], [-27, 46]].forEach(function(o){
+    col += '<circle cx="' + (IP.cx + o[0]) + '" cy="' + (IP.cy + o[1]) + '" r="27" fill="' + C_STEM_BG + '" stroke="' + C_STEM + '" stroke-width="2"/>' +
+           '<circle cx="' + (IP.cx + o[0]) + '" cy="' + (IP.cy + o[1]) + '" r="16" fill="#E1BEE7"/>';
   });
-  h += txt('', IP.cellX, 330, '피부 섬유아세포', 14, C_INK, 'middle', '700');
-  /* 확대한 세포 */
-  h += '<line x1="' + IP.cellX + '" y1="262" x2="' + IP.cellX + '" y2="' + (IP.cellY + 56) + '" stroke="#A0703F" stroke-width="1.5" stroke-dasharray="4,3"/>';
-  h += '<ellipse id="ip_cell" class="rfill" cx="' + IP.cellX + '" cy="' + IP.cellY + '" rx="70" ry="50" style="fill:#FBEBDD" stroke="#A0703F" stroke-width="2"/>' +
-       '<ellipse cx="' + IP.cellX + '" cy="' + (IP.cellY - 4) + '" rx="34" ry="26" fill="#F3DCC4" stroke="#A0703F" stroke-width="1.5"/>';
-  /* 전사 인자 유전자 칩 4개 */
+  h += '<g id="ip_col" class="rfade" opacity="0">' + col + '</g>';
+  /* 전사 인자 유전자 칩 */
   IPS_TF.forEach(function(k){
     var q0 = ipsChipPos(k, state.ipsIn);
-    h += '<g id="ip_f_' + k + '" class="rmove" transform="translate(' + q0.p.x + ',' + q0.p.y + ')' + (q0.sc !== 1 ? ' scale(' + q0.sc + ')' : '') + '"><rect x="0" y="0" width="52" height="24" rx="12" fill="' + C_TF + '"/>' + txt('', 26, 17, k, 13, '#fff', 'middle', '800') + '</g>';
+    h += '<g id="ip_f_' + k + '" class="rmove" transform="translate(' + q0.p.x + ',' + q0.p.y + ') scale(' + q0.sc + ')"><rect x="0" y="0" width="56" height="26" rx="13" fill="' + C_TF + '"/>' + txt('', 28, 18, k, 13, '#fff', 'middle', '800') + '</g>';
   });
-  /* 접시 2 — 도입 세포 · 콜로니 */
-  h += '<g id="ip_d2" class="rfade" opacity="0">' + arrow(IP.cellX + 96, 285, IP.dish2X - 96, 285, C_SUB) +
-       '<ellipse cx="' + IP.dish2X + '" cy="285" rx="88" ry="24" fill="#F4F8FB" stroke="#8FA3B5" stroke-width="2"/>' +
-       txt('', IP.dish2X, 330, '유전자 도입 세포 배양', 14, C_INK, 'middle', '700') + '</g>';
-  var col = '';
-  [[0, 0], [-22, -10], [22, -10], [-12, 14], [14, 14], [-34, 8], [34, 8], [0, -24], [-24, 26], [24, 26]].forEach(function(o){
-    col += '<circle cx="' + (IP.dish2X + o[0]) + '" cy="' + (IP.colY + o[1]) + '" r="12" fill="' + C_STEM_BG + '" stroke="' + C_STEM + '" stroke-width="2"/>';
+  /* 오른쪽 위 — 지금 이 세포 · 닮은 정도 */
+  h += txt('', 330, 52, '지금 이 세포', 14, C_SUB, '', '700');
+  h += txt('ip_who', 330, 84, IP_WHO[0], 21, C_INK, '', '800');
+  h += txt('ip_rev', 330, 112, '↺ 역분화 — 분화 이전의 상태로 돌아갔다', 15, C_STEM, '', '800', ' opacity="0" class="rfade"');
+  h += txt('', 330, 146, '배아줄기세포와 유전자발현 양상이 닮은 정도', 14, C_SUB, '', '700');
+  h += '<rect x="330" y="156" width="360" height="22" rx="11" fill="#ECEFF1" stroke="#B0BEC5" stroke-width="1.5"/>' +
+       '<rect id="ip_mbar" x="330" y="156" width="90" height="22" rx="11" fill="' + C_STEM + '" style="transition:width .6s ease"/>' +
+       txt('ip_mtxt', 690, 200, '25%', 16, C_STEM, 'end', '800');
+  /* 아래 — 유전자 발현판 */
+  h += '<rect x="14" y="222" width="692" height="196" rx="12" fill="#FAFAFC" stroke="#D0D7DE" stroke-width="1.5"/>';
+  h += txt('', 30, 250, '🔬 이 세포의 유전자 발현판 — 모든 체세포는 같은 유전자를 가진다 (노랑 = 켜짐)', 15, C_INK, '', '800');
+  h += txt('', 30, 280, '섬유아세포 특성 유전자', 13.5, '#8D5A2B', '', '800') +
+       txt('', 262, 280, '배아줄기세포 특성 유전자', 13.5, C_STEM, '', '800') +
+       txt('', 548, 280, '다른 세포의 유전자', 13.5, C_SUB, '', '800');
+  IP_LAMPS.forEach(function(L){
+    h += '<rect id="ipLr_' + L.id + '" class="rfill" x="' + (L.x + 2) + '" y="' + (L.y + 4) + '" width="66" height="42" rx="9" style="fill:#ECEFF1" stroke="#B0BEC5" stroke-width="2"/>' +
+         txt('', L.x + 35, L.y + 22, L.t, 12.5, C_INK, 'middle', '800') + txt('ipLs_' + L.id, L.x + 35, L.y + 39, '꺼짐', 11.5, C_SUB, 'middle', '700');
   });
-  h += '<g id="ip_col" class="rfade" opacity="0">' + '<line x1="' + IP.dish2X + '" y1="262" x2="' + IP.dish2X + '" y2="' + (IP.colY + 42) + '" stroke="' + C_STEM + '" stroke-width="1.5" stroke-dasharray="4,3"/>' + col +
-       txt('', IP.dish2X, IP.colY - 48, '줄기세포 콜로니', 14, C_STEM, 'middle', '800') + '</g>';
-  /* 역분화 화살표 — 피부 세포 → 줄기세포 */
-  h += '<g id="ip_rev" class="rfade" opacity="0"><path d="M' + (IP.cellX + 20) + ',' + (IP.cellY - 56) + ' Q' + ((IP.cellX + IP.dish2X) / 2) + ',' + (IP.cellY - 120) + ' ' + (IP.dish2X - 30) + ',' + (IP.colY - 62) + '" stroke="' + C_STEM + '" stroke-width="3" fill="none" stroke-dasharray="7,5"/>' +
-       arrow(IP.dish2X - 44, IP.colY - 70, IP.dish2X - 30, IP.colY - 62, C_STEM, 3) +
-       txt('', (IP.cellX + IP.dish2X) / 2, IP.cellY - 92, '역분화', 16, C_STEM, 'middle', '800') + '</g>';
-  /* 분화한 세포들 */
-  var dx = 610, kinds = [
-    { y:70, n:'신경 세포', d:'<circle cx="0" cy="0" r="12" fill="#FFF3D6" stroke="#A0703F" stroke-width="2"/><path d="M12,0 L44,-6 M-12,0 L-34,-14 M-8,9 L-24,26 M6,10 L16,30" stroke="#A0703F" stroke-width="2.5" fill="none" stroke-linecap="round"/>' },
-    { y:175, n:'심장 근육 세포', d:'<rect x="-34" y="-12" width="68" height="24" rx="8" fill="#FBD9DC" stroke="#A3123A" stroke-width="2"/><path d="M-22,-12 L-22,12 M-8,-12 L-8,12 M6,-12 L6,12 M20,-12 L20,12" stroke="#A3123A" stroke-width="1.5"/>' },
-    { y:280, n:'간세포', d:'<polygon points="-26,0 -13,-22 13,-22 26,0 13,22 -13,22" fill="#F6E7DC" stroke="' + C_TF + '" stroke-width="2"/><circle cx="0" cy="0" r="7" fill="#E6C7A8"/>' }
-  ];
-  var dg = '';
-  kinds.forEach(function(k){
-    dg += arrow(IP.dish2X + 48, IP.colY, dx - 52, k.y, C_STEM, 2.5) +
-          '<g transform="translate(' + dx + ',' + k.y + ')">' + k.d + '</g>' + txt('', dx, k.y + 42, k.n, 14, C_INK, 'middle', '700');
-  });
-  h += '<g id="ip_diff" class="rfade" opacity="0">' + dg + txt('', 485, 112, '분화', 15, C_STEM, 'middle', '800') + '</g>';
+  h += txt('ip_same', 360, 410, '유전자는 그대로 · 바뀐 것은 어떤 유전자가 켜져 있는가(유전자발현 양상)', 15, C_STEM, 'middle', '800', ' opacity="0" class="rfade"');
   return h;
 }
 function ipsApply(){
-  IPS_TF.forEach(function(k){
-    var q = ipsChipPos(k, state.ipsIn);
-    putAt('ip_f_' + k, q.p.x, q.p.y, 1, q.sc);
+  var all = ipsCount() === IPS_TF.length, ph = ipsPh;
+  IPS_TF.forEach(function(k){ var q = ipsChipPos(k, state.ipsIn); putAt('ip_f_' + k, q.p.x, q.p.y, 1, q.sc); });
+  fadeTo('ip_fib', (all && ph >= 3) ? 0 : 1);
+  fadeTo('ip_col', (all && ph >= 3) ? 1 : 0);
+  fillTo('ip_fibb', (all && ph === 2) ? '#EBD5EE' : '#F6DCC2');
+  IP_LAMPS.forEach(function(L){
+    var v = ipsLamp(L.g, ph, all), r = document.getElementById('ipLr_' + L.id), t = document.getElementById('ipLs_' + L.id);
+    if (r){ r.style.fill = v >= 1 ? '#FFE08A' : (v > 0 ? '#FFF3CF' : '#ECEFF1'); r.setAttribute('stroke', v >= 1 ? '#B7791F' : (v > 0 ? '#D4B06A' : '#B0BEC5')); }
+    if (t) t.textContent = v >= 1 ? '켜짐' : (v > 0 ? '꺼지는 중' : '꺼짐');
   });
-  fillTo('ip_cell', ipsPh >= 2 ? C_STEM_BG : '#FBEBDD');
-  fadeTo('ip_d2', ipsPh >= 2 ? 1 : 0);
-  fadeTo('ip_col', ipsPh >= 3 ? 1 : 0);
-  fadeTo('ip_rev', ipsPh >= 3 ? 1 : 0);
-  fadeTo('ip_diff', ipsPh >= 4 ? 1 : 0);
+  var pct = ipsMatch(ph, all), b = document.getElementById('ip_mbar'), mt = document.getElementById('ip_mtxt'), w = document.getElementById('ip_who');
+  if (b) b.setAttribute('width', String(Math.max(22, Math.round(360 * pct / 100))));
+  if (mt) mt.textContent = pct + '%';
+  if (w) w.textContent = IP_WHO[(!all && ph > 1) ? 1 : ph];
+  fadeTo('ip_rev', (all && ph >= 3) ? 1 : 0);
+  fadeTo('ip_same', (all && ph === IP_LAST) ? 1 : 0);
 }
 function renderIps(){
   if (!ipsMounted){ setHTML('ipsStage', ipsSvg()); ipsMounted = true; }
@@ -1493,7 +1571,99 @@ function ipsPut(k){
   updateAll();
 }
 
-/* ══════════════════ 10. ⑤ 분류 ══════════════════ */
+/* ══════════════════ 9+. ⑤ 다형성능 ══════════════════
+   같은 출발 세포에서 신경 · 심장 근육 · 간세포로 분화시켜 본다. 판정은 pluriCan() 하나(무대·캡션·검사 공용).
+   82쪽: 다형성능 = 한 세포가 여러 종류의 세포로 분화할 수 있는 능력 · 배아줄기세포는 다형성능을 가진다.
+   83쪽: 유도 만능 줄기세포는 배아줄기세포와 유사하게 다형성능을 가진다. */
+var PL_SRC = [ { k:'ips', n:'유도 만능 줄기세포' }, { k:'es', n:'배아줄기세포' }, { k:'fib', n:'피부 섬유아세포' } ];
+var PL_TGT = [ { k:'neu', n:'신경 세포', y:76 }, { k:'heart', n:'심장 근육 세포', y:196 }, { k:'liver', n:'간세포', y:316 } ];
+var plMounted = false;
+function pluriCan(src){ return src === 'ips' || src === 'es'; }
+function plSrcBy(k){ for (var i = 0; i < PL_SRC.length; i++){ if (PL_SRC[i].k === k) return PL_SRC[i]; } return null; }
+function plTgtBy(k){ for (var i = 0; i < PL_TGT.length; i++){ if (PL_TGT[i].k === k) return PL_TGT[i]; } return null; }
+function plMadeCount(src){ var n = 0; PL_TGT.forEach(function(t){ if (state.plMade[src + '_' + t.k]) n++; }); return n; }
+function plCellDraw(k){
+  if (k === 'neu') return '<circle cx="0" cy="0" r="14" fill="#FFF3D6" stroke="#A0703F" stroke-width="2.5"/><circle cx="0" cy="0" r="6" fill="#E8C98F"/><path d="M14,0 L54,-6 L64,-14 M54,-6 L66,2 M-14,0 L-40,-16 M-10,10 L-28,30 M6,13 L16,34" stroke="#A0703F" stroke-width="3" fill="none" stroke-linecap="round"/>';
+  if (k === 'heart') return '<rect x="-46" y="-16" width="92" height="32" rx="10" fill="#FBD9DC" stroke="#A3123A" stroke-width="2.5"/><path d="M-30,-16 L-30,16 M-14,-16 L-14,16 M2,-16 L2,16 M18,-16 L18,16 M34,-16 L34,16" stroke="#A3123A" stroke-width="1.6"/><ellipse cx="-6" cy="0" rx="7" ry="5" fill="#E89BA6"/>';
+  return '<polygon points="-34,0 -17,-28 17,-28 34,0 17,28 -17,28" fill="#F6E7DC" stroke="' + C_TF + '" stroke-width="2.5"/><circle cx="0" cy="0" r="9" fill="#E6C7A8"/>';
+}
+function pluriSvg(){
+  var h = '', SX = 140, SY = 196;
+  /* 출발 세포 셋 — 다 지어 두고 투명도만 바꾼다 */
+  h += '<g id="pl_s_ips" class="rfade"><circle cx="' + SX + '" cy="' + SY + '" r="56" fill="' + C_STEM_BG + '" stroke="' + C_STEM + '" stroke-width="3"/><circle cx="' + SX + '" cy="' + SY + '" r="34" fill="#E1BEE7"/></g>';
+  h += '<g id="pl_s_es" class="rfade" opacity="0"><circle cx="' + SX + '" cy="' + SY + '" r="56" fill="#EDE7F6" stroke="#5E35B1" stroke-width="3"/><circle cx="' + SX + '" cy="' + SY + '" r="34" fill="#D1C4E9"/></g>';
+  h += '<g id="pl_s_fib" class="rfade" opacity="0"><path d="M30,' + SY + ' Q80,' + (SY - 44) + ' ' + SX + ',' + (SY - 34) + ' Q210,' + (SY - 46) + ' 250,' + (SY - 4) + ' Q206,' + (SY + 34) + ' ' + SX + ',' + (SY + 34) + ' Q76,' + (SY + 44) + ' 30,' + SY + ' Z" fill="#F6DCC2" stroke="#A0703F" stroke-width="2.5"/>' +
+       '<ellipse cx="' + SX + '" cy="' + SY + '" rx="30" ry="18" fill="#EBC9A6" stroke="#A0703F" stroke-width="1.5"/></g>';
+  h += txt('pl_srcname', SX, SY + 92, '유도 만능 줄기세포', 17, C_INK, 'middle', '800');
+  h += txt('pl_srcnote', SX, SY + 116, '', 14, C_STEM, 'middle', '800');
+  h += txt('pl_cnt', SX, 40, '', 15, C_STEM, 'middle', '800');
+  /* 칸 셋 */
+  PL_TGT.forEach(function(t){
+    h += '<g id="pl_a_' + t.k + '" class="rfade" opacity="0.25">' + arrow(SX + 70, SY + (t.y - SY) * 0.25, 410, t.y, C_STEM, 3) + '</g>';
+    h += '<rect x="420" y="' + (t.y - 50) + '" width="286" height="100" rx="14" fill="#fff" stroke="#C5CAE9" stroke-width="2" stroke-dasharray="6,4"/>';
+    h += '<g id="pl_t_' + t.k + '" class="rfade" opacity="0.12" transform="translate(500,' + t.y + ')">' + plCellDraw(t.k) + '</g>';
+    h += txt('', 580, t.y + 6, t.n, 16, C_INK, '', '800');
+    h += txt('pl_x_' + t.k, 500, t.y + 16, '✕', 46, '#C62828', 'middle', '800', ' opacity="0" class="rfade"');
+  });
+  return h;
+}
+function pluriApply(){
+  var src = state.plSrc, can = pluriCan(src);
+  PL_SRC.forEach(function(s){ fadeTo('pl_s_' + s.k, s.k === src ? 1 : 0); });
+  var nm = document.getElementById('pl_srcname'); if (nm) nm.textContent = plSrcBy(src).n;
+  var nt = document.getElementById('pl_srcnote'); if (nt) nt.textContent = can ? '분화하기 전의 줄기세포' : '분화를 마친 체세포';
+  var ct = document.getElementById('pl_cnt'); if (ct) ct.textContent = can ? '만들어 낸 세포의 종류 ' + plMadeCount(src) + ' / 3' : '';
+  PL_TGT.forEach(function(t){
+    var made = !!state.plMade[src + '_' + t.k];
+    fadeTo('pl_t_' + t.k, made ? 1 : 0.12);
+    fadeTo('pl_a_' + t.k, made ? 1 : 0.25);
+    fadeTo('pl_x_' + t.k, (!can && state.plLast === src + '_' + t.k) ? 1 : 0);
+  });
+}
+function pluriCaption(){
+  var src = state.plSrc, s = plSrcBy(src), last = state.plLast;
+  if (!last || last.indexOf(src + '_') !== 0) return '출발 세포는 <b>' + s.n + '</b>이다. 오른쪽에서 분화 조건 단추를 누르시오.';
+  var t = plTgtBy(last.slice(src.length + 1));
+  if (pluriCan(src)) return '같은 <b>' + s.n + '</b>' + josaIGa(s.n) + ' 배양 조건에 따라 <b>' + t.n + '</b>로 분화하였다. 이 세포에서는 이제 ' + t.n + '의 특성을 나타내는 유전자들이 발현된다.';
+  return '<b>피부 섬유아세포</b>는 이미 분화를 마친 세포이므로, 전사 인자 유전자를 도입하지 않으면 <b>' + t.n + '</b>로 분화하지 않는다. 다형성능이 없다.';
+}
+function pluriDone(){ return plMadeCount('ips') === PL_TGT.length && !!state.plFib; }
+function renderPluri(){
+  if (!plMounted){ setHTML('pluriStage', pluriSvg()); plMounted = true; }
+  pluriApply();
+  var h = '';
+  PL_SRC.forEach(function(s){
+    var on = state.plSrc === s.k;
+    h += '<button type="button" class="hchip stem' + (on ? ' on' : '') + '" onclick="plPickSrc(&#39;' + s.k + '&#39;)" aria-pressed="' + on + '">' + s.n + '</button>';
+  });
+  setHTML('plSrcChips', h);
+  h = '';
+  PL_TGT.forEach(function(t){ h += '<button type="button" class="btn stem" onclick="plDiff(&#39;' + t.k + '&#39;)">' + t.n + '로 분화시키기</button>'; });
+  setHTML('plTgtBtns', h);
+  setHTML('pl_cap', pluriCaption());
+  var sm = document.getElementById('pl_sum');
+  if (sm) sm.style.display = pluriDone() ? '' : 'none';
+}
+function plPickSrc(k){
+  if (!plSrcBy(k)) return;
+  state.plSrc = k;
+  saveState(); renderPluri(); showFb('fb_pluri', ''); updateAll();
+}
+function plDiff(t){
+  if (!plTgtBy(t)) return;
+  var src = state.plSrc, key = src + '_' + t;
+  state.plLast = key;
+  if (pluriCan(src)) state.plMade[key] = true; else state.plFib = true;
+  saveState();
+  renderPluri();
+  if (pluriDone()) showFb('fb_pluri', '', '');
+  else if (!pluriCan(src)) showFb('fb_pluri', 'warn', '분화하지 않았다. 다시 <b>유도 만능 줄기세포</b>를 골라 세 종류를 모두 만들어 보시오.');
+  else if (plMadeCount('ips') < PL_TGT.length) showFb('fb_pluri', 'info', '유도 만능 줄기세포로 아직 만들지 않은 세포가 있다. 계속하시오.');
+  else showFb('fb_pluri', 'info', '이번에는 <b>피부 섬유아세포</b>를 골라 같은 단추를 눌러 보시오.');
+  updateAll();
+}
+
+/* ══════════════════ 10. ⑥ 분류 ══════════════════ */
 function renderSort(){
   var cols = ['es', 'ips', 'both'], h = '<table class="stbl"><thead><tr>';
   cols.forEach(function(c){ h += '<th>' + COL_NAME[c] + '</th>'; });
@@ -1532,7 +1702,7 @@ function dropCard(col){
   updateAll();
 }
 
-/* ══════════════════ 11. ⑥ 오가노이드 ══════════════════ */
+/* ══════════════════ 11. ⑦ 오가노이드 ══════════════════ */
 function renderOrg(){
   var h = '';
   ORG_USES.forEach(function(u){
@@ -1628,6 +1798,20 @@ var Q_IPS = [
         '옳지 않다. 배아를 사용하지 않는 것이 유도 만능 줄기세포의 장점이다.',
         '옳지 않다. 피부 섬유아세포는 완전히 분화된 체세포이다.'],
     ex:'분화한 세포도 유전체가 완전하므로(79쪽), 세포의 종류를 정하는 <b>전사 인자</b>(80쪽)를 바꾸어 주면 유전자발현 양상이 배아줄기세포와 비슷해져 다형성능을 갖게 된다(83쪽).' }
+];
+var Q_PLURI = [
+  { id:'q6',
+    q:'다형성능을 가장 잘 보여 주는 예로 옳은 것은?',
+    ch:['유도 만능 줄기세포를 배양 조건만 달리하여 신경 세포와 심장 근육 세포로 각각 분화시킨다.',
+        '피부 섬유아세포 하나가 체세포 분열을 하여 모양과 기능이 똑같은 피부 섬유아세포 2개가 된다.',
+        '심장 근육 세포가 수축과 이완을 되풀이하여 혈액을 온몸으로 내보내는 일을 계속한다.',
+        '신경 세포가 길게 뻗은 돌기를 통해 다른 신경 세포에 신호를 빠르게 전달한다.'],
+    a:0,
+    no:['',
+        '옳지 않다. 같은 종류의 세포가 늘어난 것이다. 다형성능은 한 세포가 여러 종류의 세포로 분화할 수 있는 능력이다.',
+        '옳지 않다. 이미 분화를 마친 세포가 제 기능을 하는 것이다.',
+        '옳지 않다. 이미 분화를 마친 세포가 제 기능을 하는 것이다.'],
+    ex:'다형성능은 <b>한 세포</b>가 <b>여러 종류의 세포</b>로 분화할 수 있는 능력이다(82쪽). 배아줄기세포와 유도 만능 줄기세포는 다형성능을 가지지만, 분화를 마친 체세포는 그렇지 않다.' }
 ];
 var Q_ORG = [
   { id:'q5',
@@ -1730,7 +1914,7 @@ var SELFCHECK = [
 /* ══════════════════ 14. 문항 엔진 ══════════════════
    ★답은 몇 번이든 고칠 수 있다. 정오는 기록하지 않는다 — 마지막 선택만 화면 복원용으로 저장한다. */
 var qEls = {};
-function ALLQ(){ return [].concat(Q_INTRO, Q_MAP, Q_MUT, Q_CASC, Q_IPS, Q_ORG, PRACTICE); }
+function ALLQ(){ return [].concat(Q_INTRO, Q_MAP, Q_MUT, Q_CASC, Q_IPS, Q_PLURI, Q_ORG, PRACTICE); }
 function qById(id){ var L = ALLQ(), i; for (i = 0; i < L.length; i++){ if (L[i].id === id) return L[i]; } return null; }
 function pickStore(id){ return (id.indexOf('p') === 0) ? state.pPick : state.qPick; }
 function answeredOf(list, store){ var n = 0; list.forEach(function(p){ if (store[p.id] !== undefined) n++; }); return n; }
@@ -1943,16 +2127,18 @@ var SEC_DEF = {
            run:function(){ state.cascSeen = false; cascPh = 0; } },
   ips:   { qs:function(){ return Q_IPS; },   ask:false, fb:'fb_ips',  msg:'④를 처음 단계로 되돌리고, 도입한 유전자와 문항을 지웠다.',
            run:function(){ state.ipsSeen = false; state.ipsIn = {}; ipsPh = 0; } },
-  sort:  { qs:function(){ return []; },      ask:true,  fb:'fb_sort', msg:'⑤의 카드를 모두 거두었다 — 다시 놓으시오.',
+  pluri: { qs:function(){ return Q_PLURI; }, ask:false, fb:'fb_pluri', msg:'⑤를 처음 상태로 되돌리고 문항을 지웠다.',
+           run:function(){ state.plSrc = 'ips'; state.plMade = {}; state.plLast = ''; state.plFib = false; } },
+  sort:  { qs:function(){ return []; },      ask:true,  fb:'fb_sort', msg:'⑥의 카드를 모두 거두었다 — 다시 놓으시오.',
            run:function(){ state.sortPut = {}; cardSel = ''; } },
-  org:   { qs:function(){ return Q_ORG; },   ask:false, fb:'fb_org',  msg:'⑥의 관찰과 문항을 지웠다.',
+  org:   { qs:function(){ return Q_ORG; },   ask:false, fb:'fb_org',  msg:'⑦의 관찰과 문항을 지웠다.',
            run:function(){ state.orgSeen = {}; state.orgSel = ''; } },
-  prac:  { prac:true,  ask:false, fb:'', msg:'💪 의 문항을 지웠다.' },
-  write: { write:true, ask:true,  fb:'', msg:'⑦에 적은 답안과 자기평가를 지웠다.' }
+  prac:  { prac:true,  ask:false, fb:'', msg:'💪의 문항을 지웠다.' },
+  write: { write:true, ask:true,  fb:'', msg:'⑧에 적은 답안과 자기평가를 지웠다.' }
 };
 var SEC_ASK = {
-  sort:  '⑤에 놓은 카드를 모두 거두고 이 단계만 다시 하시겠습니까? (다른 단계는 그대로 둔다)',
-  write: '⑦에 적은 답안을 모두 지우고 이 단계만 다시 하시겠습니까? (다른 단계는 그대로 둔다)'
+  sort:  '⑥에 놓은 카드를 모두 거두고 이 단계만 다시 하시겠습니까? (다른 단계는 그대로 둔다)',
+  write: '⑧에 적은 답안을 모두 지우고 이 단계만 다시 하시겠습니까? (다른 단계는 그대로 둔다)'
 };
 function resetSec(key){
   var d = SEC_DEF[key];
@@ -1975,7 +2161,7 @@ function resetAll(){
   try{ localStorage.removeItem(LS_KEY); }catch(e){}
   state = freshState();
   cardSel = ''; cascPh = 0; ipsPh = 0;
-  mapMounted = false; mutMounted = false; cascMounted = false; ipsMounted = false; homMounted = false;
+  mapMounted = false; mutMounted = false; cascMounted = false; ipsMounted = false; homMounted = false; plMounted = false;
   if (typeof location !== 'undefined' && location.reload) location.reload();
 }
 
@@ -1988,8 +2174,9 @@ function legendFill(){
     lgItem('<rect x="2" y="3" width="30" height="20" rx="5" fill="' + GENES8[4].c + '"/><text x="17" y="18" font-size="13" fill="#fff" text-anchor="middle" font-weight="800">5</text>', 34, 26, '0 0 34 26', '체절에서 발현되는 호미오유전자(번호)') +
     lgItem('<rect x="2" y="2" width="30" height="22" rx="6" fill="none" stroke="' + C_INK + '" stroke-width="2.5" stroke-dasharray="5,3"/>', 34, 26, '0 0 34 26', '발현이 바뀐 체절'));
   setHTML('ip_lg',
-    lgItem('<rect x="1" y="3" width="44" height="20" rx="10" fill="' + C_TF + '"/><text x="23" y="17" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">OCT4</text>', 46, 26, '0 0 46 26', '전사 인자 유전자') +
-    lgItem('<circle cx="12" cy="12" r="9" fill="' + C_STEM_BG + '" stroke="' + C_STEM + '" stroke-width="2"/>', 24, 24, '0 0 24 24', '줄기세포'));
+    lgItem('<rect x="1" y="3" width="44" height="20" rx="10" fill="' + C_TF + '"/><text x="23" y="17" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">OCT4</text>', 46, 26, '0 0 46 26', '도입하는 전사 인자 유전자') +
+    lgItem('<rect x="2" y="3" width="34" height="20" rx="6" fill="#FFE08A" stroke="#B7791F" stroke-width="2"/>', 38, 26, '0 0 38 26', '켜진 유전자(발현)') +
+    lgItem('<rect x="2" y="3" width="34" height="20" rx="6" fill="#ECEFF1" stroke="#B0BEC5" stroke-width="2"/>', 38, 26, '0 0 38 26', '꺼진 유전자'));
 }
 function restoreUI(){
   renderPage();
@@ -1998,6 +2185,7 @@ function restoreUI(){
   renderMut();
   renderCasc();
   renderIps();
+  renderPluri();
   renderSort();
   renderOrg();
   legendFill();
@@ -2006,6 +2194,7 @@ function restoreUI(){
   renderQuizInto(Q_MUT,   'mutQ',   'g5');
   renderQuizInto(Q_CASC,  'cascQ',  'g5');
   renderQuizInto(Q_IPS,   'ipsQ',   'stem');
+  renderQuizInto(Q_PLURI, 'pluriQ', 'stem');
   renderQuizInto(Q_ORG,   'orgQ',   'stem');
   renderQuizInto(PRACTICE, 'pracBox', '');
   renderWrite();
@@ -2033,12 +2222,16 @@ function init(){
       else if (typeof sv === typeof state[k]){ state[k] = sv; }
     });
   }
-  ['homSeen', 'mapSeen', 'mut', 'mutSeen', 'ipsIn', 'sortPut', 'orgSeen', 'qPick', 'pPick', 'ta', 'self'].forEach(function(k){
+  ['homSeen', 'plMade', 'mapSeen', 'mut', 'mutSeen', 'ipsIn', 'sortPut', 'orgSeen', 'qPick', 'pPick', 'ta', 'self'].forEach(function(k){
     if (!state[k] || typeof state[k] !== 'object' || Array.isArray(state[k])) state[k] = {};
   });
   /* ★범위 밖의 값·없는 이름은 걸러 낸다 */
   state.page = (state.page === 2) ? 2 : 1;
   if (!homBy(state.homSel)) state.homSel = '';
+  if (!plSrcBy(state.plSrc)) state.plSrc = 'ips';
+  Object.keys(state.plMade).forEach(function(k){ var a = k.split('_'); if (a.length !== 2 || !plSrcBy(a[0]) || !pluriCan(a[0]) || !plTgtBy(a[1]) || state.plMade[k] !== true) delete state.plMade[k]; });
+  if (!/^(ips|es|fib)_(neu|heart|liver)$/.test(state.plLast)) state.plLast = '';
+  state.plFib = (state.plFib === true);
   Object.keys(state.homSeen).forEach(function(k){ if (!homBy(k) || state.homSeen[k] !== true) delete state.homSeen[k]; });
   state.mapSel = Math.round(Number(state.mapSel));
   if (!(state.mapSel >= 0 && state.mapSel <= 8)) state.mapSel = 0;
@@ -2053,7 +2246,7 @@ function init(){
   var uses = ORG_USES.map(function(u){ return u.id; });
   Object.keys(state.orgSeen).forEach(function(k){ if (uses.indexOf(k) < 0 || state.orgSeen[k] !== true) delete state.orgSeen[k]; });
   if (uses.indexOf(state.orgSel) < 0) state.orgSel = '';
-  [Q_INTRO, Q_MAP, Q_MUT, Q_CASC, Q_IPS, Q_ORG].forEach(function(L){
+  [Q_INTRO, Q_MAP, Q_MUT, Q_CASC, Q_IPS, Q_PLURI, Q_ORG].forEach(function(L){
     L.forEach(function(p){
       var v = state.qPick[p.id];
       if (v !== undefined && !(typeof v === 'number' && v >= 0 && v < p.ch.length)) delete state.qPick[p.id];
